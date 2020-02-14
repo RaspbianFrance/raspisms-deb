@@ -47,6 +47,11 @@ create_line_or_append () {
     fi
 }
 
+#############
+### CONST ###
+#############
+SCRIPT_DIR=$(dirname $(readlink -f $0))
+echo $SCRIPT_DIR
 
 #############
 ### CLEAN ###
@@ -156,3 +161,18 @@ CHANGELOG_TAIL=`tail -n1 ./changelog`
 printf "$CHANGELOG_HEAD\n\n$CHANGELOG_MESSAGE\n\n$CHANGELOG_TAIL\n" > ./changelog
 
 printf "OK.\n\n"
+
+
+#Create manpages
+cp "$SCRIPT_DIR/files/manpage.1" "./$PACKAGE_NAME.1"
+echo "docs/$PACKAGE_NAME.1" > "./$PACKAGE_NAME.manpages"
+
+#Remove useless files
+rm ./README.Debian
+rm ./README.source
+rm ./*.ex
+rm ./*.EX
+rm ./"$PACKAGE_NAME"-doc*
+
+
+
