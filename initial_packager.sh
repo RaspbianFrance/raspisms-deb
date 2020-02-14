@@ -100,7 +100,7 @@ rm -rf .git*
 
 #Create archive
 cd ../..
-tar --exclude-vcs -C "./src" -cvf "./src/$PACKAGE_NAME_V.tar.gz" "./$PACKAGE_NAME_V"
+tar --exclude-vcs -C "./src" -zcvf "./src/$PACKAGE_NAME_V.tar.gz" "./$PACKAGE_NAME_V"
 
 printf "OK.\n\n"
 
