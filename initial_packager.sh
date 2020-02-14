@@ -11,6 +11,12 @@ error_report () {
     exit 1
 }
 
+uncomment_line () {
+    local file=$1
+    local line_start=$2
+    sed -i "s/^#$line_start: \(.*\)/$line_start: \1/g" "$file"
+}
+
 create_line_or_replace () {
     local file=$1
     local line_start=$2
@@ -121,20 +127,21 @@ cd debian
 printf "Update control file...\n"
 
 #Delete lines starting with a space
-sed -i 's/^ .*//g' ./control
-
+sed -i '/^ .*/d' ./control
 create_line_or_replace "./control" "Section" "$CONTROL_SECTION"
 create_line_or_replace "./control" "Homepage" "$CONTROL_HOMEPAGE"
 create_line_or_replace "./control" "Architecture" "$CONTROL_ARCHITECTURE"
+
+uncomment_line "./control" "Vcs-Git"
 create_line_or_replace "./control" "Vcs-Git" "$GIT_REPOSITORY"
+uncomment_line "./control" "Vcs-Browser"
 create_line_or_replace "./control" "Vcs-Browser" "$GIT_REPOSITORY"
+
 create_line_or_replace "./control" "Description" "$CONTROL_DESCRIPTION_SHORT\n$CONTROL_DESCRIPTION_LONG"
 
 create_line_or_append "./control" "Depends" "$CONTROL_DEPENDS"
 create_line_or_append "./control" "Recommends" "$CONTROL_RECOMMENDS"
 
-#Delete commented lines
-sed -i '/^#.*/d' ./control
 
 printf "Done.\n\n"
 
