@@ -171,8 +171,8 @@ printf "OK.\n\n"
 
 
 #Create manpages
-cp "$SCRIPT_DIR/files/manpage.1" "./$PACKAGE_NAME.1"
-echo "docs/$PACKAGE_NAME.1" > "./$PACKAGE_NAME.manpages"
+#cp "$SCRIPT_DIR/files/manpage.1" "./$PACKAGE_NAME.1"
+#echo "docs/$PACKAGE_NAME.1" > "./$PACKAGE_NAME.manpages"
 
 #Remove useless files
 rm ./README.Debian
