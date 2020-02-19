@@ -1,0 +1,28 @@
+Template: raspisms/title
+Type: title
+Description: RaspiSMS Configuration
+ Title of RaspiSMS configuration window.
+
+Template: raspisms/app_user
+Type: text
+Description: Configure the administrator account to create for RaspiSMS
+ RaspiSMS need to create at least one administrator account in order to you to be able to connect.
+
+Template: raspisms/app_user_email
+Type: string
+Default: admin@example.com
+Description: Enter the e-mail address to use for RaspiSMS administrator account.
+ You must provide an e-mail address to be used with this account.
+
+Template: raspisms/app_user_password
+Type: password
+Description: Enter the password address to use for RaspiSMS administrator account.
+ You must provide a password to be used with this account.
+
+Template: raspisms/apache_auto_conf
+Type: boolean
+Default: true
+Description: Should we automaticly configure Apache to make RaspiSMS available.
+ RaspiSMS need to be made available using a web server like Apache or Nginx.
+ If you wish we can automaticly configure Apache for you.
+

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#Source debconf lib
+. /usr/share/debconf/confmodule
+
+
+### FUNCTIONS ###
+do_app_user () {
+    db_beginblock
+
+        db_reset raspisms/app_user
+        db_input high raspisms/app_user
+
+        db_reset raspisms/app_user_email
+        db_input high raspisms/app_user_email
+        db_go
+
+        db_reset raspisms/app_user_password
+        db_input high raspisms/app_user_password
+        db_go
+
+    db_endblock
+}
+
+
+do_apache_conf () {
+    db_beginblock
+
+        db_reset raspisms/apache_auto_conf
+        db_input high raspisms/apache_auto_conf
+        db_go
+
+    db_endblock
+}
+
+
+do_title () {
+    db_settitle raspisms/title
+}
+
+do_title
+do_app_user
+do_apache_conf

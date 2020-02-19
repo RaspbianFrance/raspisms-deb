@@ -139,6 +139,7 @@ create_line_or_replace "./control" "Vcs-Browser" "$GIT_REPOSITORY"
 
 create_line_or_replace "./control" "Description" "$CONTROL_DESCRIPTION_SHORT\n$CONTROL_DESCRIPTION_LONG"
 
+create_line_or_append "./control" "Pre-Depends" "$CONTROL_PRE_DEPENDS"
 create_line_or_append "./control" "Depends" "$CONTROL_DEPENDS"
 create_line_or_append "./control" "Recommends" "$CONTROL_RECOMMENDS"
 
@@ -173,6 +174,12 @@ printf "OK.\n\n"
 #Create manpages
 #cp "$SCRIPT_DIR/files/manpage.1" "./$PACKAGE_NAME.1"
 #echo "docs/$PACKAGE_NAME.1" > "./$PACKAGE_NAME.manpages"
+
+
+#Copy files
+cp -r $SCRIPT_DIR/files/* .
+
+
 
 #Remove useless files
 rm ./README.Debian

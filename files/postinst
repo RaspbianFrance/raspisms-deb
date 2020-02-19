@@ -1,0 +1,185 @@
+#!/bin/bash
+
+#Source debconf lib
+. /usr/share/debconf/confmodule
+
+
+SCRIPT_DIR=$(dirname $(readlink -f $0))
+
+#Conf
+INSTALL_DIR="/opt/raspisms"
+APACHE_AVAILABLE_DIR="/etc/apache2/sites-available"
+APACHE_AUTO_CONF=$(db_get raspisms/apache_auto_conf)
+
+APP_ENV="prod"
+APP_SECRET=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+
+APP_DATABASE_HOST="localhost"
+APP_DATABASE_NAME="raspisms"
+APP_DATABASE_USER="raspisms"
+APP_DATABASE_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+
+db_get raspisms/app_user_email
+APP_USER_EMAIL=$RET
+
+db_get raspisms/app_user_password
+APP_USER_PASSWORD=$RET
+if [ -z "$APP_USER_PASSWORD" ]
+then
+    APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+fi
+
+APP_USER_ADMIN=true
+
+GENERATED_USER_TEXT="Email: $APP_USER_EMAIL\n\
+Password: $APP_USER_PASSWORD\n\
+Admin: $APP_USER_ADMIN\n"
+
+echo Email : $APP_USER_EMAIL
+echo Password : $APP_USER_PASSWORD
+echo Apache : $APACHE_AUTO_CONF
+
+trap error_report ERR
+
+### Functions ###
+error_report () {
+    printf "\n\nError on line $(caller)\n\n";
+    exit 1
+}
+
+
+do_app_installation () {
+    do_composer
+    do_app_config
+    do_phinx
+    do_create_user
+}
+
+
+do_composer () {
+    printf "\n"
+    printf "Do composer installation...\n"
+    
+    cd $INSTALL_DIR
+    ./composer.phar self-update
+    ./composer.phar install
+    
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_phinx () {
+    printf "\n"
+    printf "Do Phinx migrations...\n"
+    
+    cd $INSTALL_DIR
+    vendor/bin/phinx migrate
+    
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_app_config () {
+    printf "\n"
+    printf "Do configuration of RaspiSMS app...\n"
+
+    cd $INSTALL_DIR
+
+    printf "  Copy .dist files to .dist.local for edition\n"
+    find . -type f -name "*.dist" -exec cp {} {}.local \;
+
+    printf "  Replace APP_ENV : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_ENV%' "$APP_ENV" -- {} \;
+    
+    printf "  Replace APP_SECRET : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_SECRET%' "$APP_SECRET" -- {} \;
+    
+    printf "  Replace APP_DATABASE_HOST : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_HOST%' "$APP_DATABASE_HOST" -- {} \;
+    
+    printf "  Replace APP_DATABASE_NAME : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_NAME%' "$APP_DATABASE_NAME" -- {} \;
+    
+    printf "  Replace APP_DATABASE_USER : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_USER%' "$APP_DATABASE_USER" -- {} \;
+    
+    printf "  Replace APP_DATABASE_PASS : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_PASS%' "$APP_DATABASE_PASS" -- {} \;
+
+    printf "  Remove .dist.local extensions.\n"
+    for f in *.dist.local
+    do
+        mv -i $f `basename $f ".dist.local"`
+    done
+
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_create_user () {
+    printf "\n"
+    printf "Create RaspiSMS default user.\n"
+    
+    cd $INSTALL_DIR
+
+    ./console.php controllers/internals/Console.php create_user --email="$APP_USER_EMAIL" --password="$APP_USER_PASSWORD" --admin="$APP_USER_ADMIN"
+
+    if [ ! $? -eq 0 ]
+    then
+        printf "\n"
+        printf "Error during user generation."
+        printf "\n"
+        exit 1
+    fi
+    
+    printf "  Create default RaspiSMS admin account : \n"
+    printf "  $GENERATED_USER_TEXT"
+
+    printf "$GENERATED_USER_TEXT" > ./.credentials
+    printf "\n"
+    printf "  #################################################################\n"
+    printf "  You can find those credentials in file $INSTALL_DIR/.credentials\n"
+    printf "  #################################################################\n"
+    printf "\n"
+
+    printf "Done\n"
+    printf "\n"
+}
+
+
+do_apache_config () {
+    if [ ! $APACHE_AUTO_CONF ]
+    then
+        exit 0
+    fi
+
+    if [ ! `which apache2` ] 
+    then
+        exit 1
+    fi
+
+    printf "\n"
+    printf "Configure apache2 to make RaspiSMS available over http://localhost/raspisms\n"
+    
+    cd $INSTALL_DIR
+
+    printf "  Make symlink $INSTALL_DIR/confs/apache2/raspisms.conf to $APACHE_AVAILABLE_DIR/raspisms.conf\n"
+    ln -s "$INSTALL_DIR/confs/apache2/raspisms.conf" "$APACHE_AVAILABLE_DIR/raspisms.conf"
+
+    printf "  Enable raspisms.conf\n"
+    a2ensite "raspisms.conf"
+
+    printf "Restart apache.\n"
+    printf "\n"
+    service apache2 restart
+}
+
+
+do_mysql_config () {
+    echo "mysql"    
+}
