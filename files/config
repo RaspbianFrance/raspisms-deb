@@ -2,17 +2,21 @@
 
 #Source debconf lib
 . /usr/share/debconf/confmodule
-
-
-#Do database config
 . /usr/share/dbconfig-common/dpkg/config.mysql
-if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]
+    
+if [ ! -f /usr/share/dbconfig-common/dpkg/config.mysql ]
 then
-    dbc_dbname="raspismstmp"
-    dbc_go raspisms "$@"
+    exit 1
 fi
 
+dbc_dbuser="root"
+dbc_dbname="raspismstmp"
+dbc_go raspisms "$@"
+
+
 ### FUNCTIONS ###
+
+
 do_app_user () {
     db_beginblock
 

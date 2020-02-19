@@ -93,6 +93,7 @@ fi
 
 #Copy .git to appropriate dir
 PACKAGE_NAME_V="$PACKAGE_NAME-$VERSION_NUMBER"
+PACKAGE_DIR="$SCRIPT_DIR/src/$PACKAGE_NAME-$VERSION_NUMBER"
 cd .. ; cp -r git $PACKAGE_NAME_V ; rm -rf git ; cd $PACKAGE_NAME_V
 
 #Remove .git files
@@ -189,4 +190,7 @@ rm ./*.EX
 rm ./"$PACKAGE_NAME"-doc*
 
 
-
+#Build
+cd $PACKAGE_DIR
+dpkg-buildpackage -us -uc
+cd ..
