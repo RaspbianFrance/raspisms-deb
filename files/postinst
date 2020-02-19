@@ -3,6 +3,12 @@
 #Source debconf lib
 . /usr/share/debconf/confmodule
 
+. /usr/share/dbconfig-common/dpkg/config.mysql
+if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]
+then
+    dbc_mysql_createdb_encoding="UTF8"
+    dbc_go raspisms "$@"
+fi
 
 SCRIPT_DIR=$(dirname $(readlink -f $0))
 

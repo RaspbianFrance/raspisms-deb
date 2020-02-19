@@ -93,7 +93,7 @@ fi
 
 #Copy .git to appropriate dir
 PACKAGE_NAME_V="$PACKAGE_NAME-$VERSION_NUMBER"
-cd .. ; cp -r git $PACKAGE_NAME_V ; cd $PACKAGE_NAME_V
+cd .. ; cp -r git $PACKAGE_NAME_V ; rm -rf git ; cd $PACKAGE_NAME_V
 
 #Remove .git files
 rm -rf .git*
