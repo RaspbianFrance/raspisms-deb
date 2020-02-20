@@ -3,49 +3,62 @@
 #Source debconf lib
 . /usr/share/debconf/confmodule
 
-. /usr/share/dbconfig-common/dpkg/config.mysql
-if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]
-then
-    dbc_mysql_createdb_encoding="UTF8"
-    dbc_go raspisms "$@"
-fi
-
-echo "DBC_DBPASS : $dbc_dbpass"
-
 SCRIPT_DIR=$(dirname $(readlink -f $0))
 
-#Conf
-INSTALL_DIR="/opt/raspisms"
-APACHE_AVAILABLE_DIR="/etc/apache2/sites-available"
-APACHE_AUTO_CONF=$(db_get raspisms/apache_auto_conf)
+### CONF VARS ###
 
+INSTALL_DIR="/opt/raspisms"
+
+#Apache
+APACHE_AVAILABLE_DIR="/etc/apache2/sites-available"
+db_get raspisms/apache_auto_conf
+APACHE_AUTO_CONF=$RET
+
+#Systemd
+db_get raspisms/systemd_auto_conf
+SYSTEMD_AUTO_CONF=$RET
+SYSTEMD_DIR="/etc/systemd/system"
+
+#App fix values
 APP_ENV="prod"
 APP_SECRET=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
-APP_DATABASE_HOST="localhost"
-APP_DATABASE_NAME="raspisms"
-APP_DATABASE_USER="raspisms"
-APP_DATABASE_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+#Database & app database
+db_get raspisms/database_auto_conf
+DATABASE_AUTO_CONF=$RET
+db_get raspisms/database_admin_user
+DATABASE_ADMIN_USER=$RET
+db_get raspisms/database_admin_password
+DATABASE_ADMIN_PASSWORD=$RET
+db_reset raspisms/database_admin_password
+db_get raspisms/database_host
+APP_DATABASE_HOST=$RET
+db_get raspisms/database_name
+APP_DATABASE_NAME=$RET
+db_get raspisms/database_user
+APP_DATABASE_USER=$RET
+db_get raspisms/database_password
+APP_DATABASE_PASS=$RET
+db_reset raspisms/database_password
+if [ -z "$APP_DATABASE_PASS" ] ; then APP_DATABASE_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) ; fi
 
+#App user
 db_get raspisms/app_user_email
 APP_USER_EMAIL=$RET
-
 db_get raspisms/app_user_password
 APP_USER_PASSWORD=$RET
-if [ -z "$APP_USER_PASSWORD" ]
-then
-    APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-fi
-
+db_reset raspisms/app_user_password
+if [ -z "$APP_USER_PASSWORD" ] ; then APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1) ; fi
 APP_USER_ADMIN=true
+
+GENERATED_DATABASE_TEXT="Host: $APP_DATABASE_HOST\n\
+User: $APP_DATABASE_USER\n\
+Pass: $APP_DATABASE_PASS\n\
+Name: $APP_DATABASE_NAME\n"
 
 GENERATED_USER_TEXT="Email: $APP_USER_EMAIL\n\
 Password: $APP_USER_PASSWORD\n\
 Admin: $APP_USER_ADMIN\n"
-
-echo Email : $APP_USER_EMAIL
-echo Password : $APP_USER_PASSWORD
-echo Apache : $APACHE_AUTO_CONF
 
 trap error_report ERR
 
@@ -57,10 +70,13 @@ error_report () {
 
 
 do_app_installation () {
-    do_composer
-    do_app_config
-    do_phinx
-    do_create_user
+    do_composer || return 1
+    do_app_config || return 1
+    
+    if [ ! $DATABASE_AUTO_CONF ]; then return 0; fi
+    
+    do_phinx || return 1
+    do_create_user || return 1
 }
 
 
@@ -106,22 +122,24 @@ do_app_config () {
     printf "  Replace APP_SECRET : \n"
     find . -type f -name "*.dist.local" -exec replace '%APP_SECRET%' "$APP_SECRET" -- {} \;
     
-    printf "  Replace APP_DATABASE_HOST : \n"
-    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_HOST%' "$APP_DATABASE_HOST" -- {} \;
-    
-    printf "  Replace APP_DATABASE_NAME : \n"
-    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_NAME%' "$APP_DATABASE_NAME" -- {} \;
-    
-    printf "  Replace APP_DATABASE_USER : \n"
-    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_USER%' "$APP_DATABASE_USER" -- {} \;
-    
-    printf "  Replace APP_DATABASE_PASS : \n"
-    find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_PASS%' "$APP_DATABASE_PASS" -- {} \;
+    if [ "$DATABASE_AUTO_CONF" = "true" ]; then
+        printf "  Replace APP_DATABASE_HOST : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_HOST%' "$APP_DATABASE_HOST" -- {} \;
+        
+        printf "  Replace APP_DATABASE_NAME : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_NAME%' "$APP_DATABASE_NAME" -- {} \;
+        
+        printf "  Replace APP_DATABASE_USER : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_USER%' "$APP_DATABASE_USER" -- {} \;
+        
+        printf "  Replace APP_DATABASE_PASS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_PASS%' "$APP_DATABASE_PASS" -- {} \;
+    fi
 
     printf "  Remove .dist.local extensions.\n"
     for f in *.dist.local
     do
-        mv -i $f `basename $f ".dist.local"`
+        mv $f `basename $f ".dist.local"`
     done
 
     printf "Done.\n"
@@ -163,12 +181,12 @@ do_create_user () {
 do_apache_config () {
     if [ ! $APACHE_AUTO_CONF ]
     then
-        exit 0
+        return 0
     fi
 
     if [ ! `which apache2` ] 
     then
-        exit 1
+        return 0
     fi
 
     printf "\n"
@@ -177,17 +195,95 @@ do_apache_config () {
     cd $INSTALL_DIR
 
     printf "  Make symlink $INSTALL_DIR/confs/apache2/raspisms.conf to $APACHE_AVAILABLE_DIR/raspisms.conf\n"
-    ln -s "$INSTALL_DIR/confs/apache2/raspisms.conf" "$APACHE_AVAILABLE_DIR/raspisms.conf"
+    ln -sf "$INSTALL_DIR/confs/apache2/raspisms.conf" "$APACHE_AVAILABLE_DIR/raspisms.conf"
 
     printf "  Enable raspisms.conf\n"
     a2ensite "raspisms.conf"
+    
+    printf "  Enable apache rewrite\n"
+    a2enmod "rewrite"
 
-    printf "Restart apache.\n"
+    printf "Reload apache.\n"
     printf "\n"
-    service apache2 restart
+    service apache2 reload
 }
 
 
-do_mysql_config () {
-    echo "mysql"    
+do_systemd_config () {
+    if [ ! $SYSTEMD_AUTO_CONF ]
+    then
+        return 0
+    fi
+
+    if [ ! `which systemd` ] 
+    then
+        printf "Systemd is not installed.\n"
+        return 0
+    fi
+
+    printf "\n"
+    printf "Configure systemd to make RaspiSMS start on boot\n"
+    
+    cd $INSTALL_DIR
+
+    printf "  Make symlink $INSTALL_DIR/confs/systemd/raspisms.service to $SYSTEMD_DIR/raspisms.service\n"
+    ln -sf "$INSTALL_DIR/confs/systemd/raspisms.service" "$SYSTEMD_DIR/raspisms.service"
+    chmod 644 "$SYSTEMD_DIR/raspisms.service"
+
+    printf "  Enable raspisms.service\n"
+    systemctl enable raspisms.service
+    if [ ! $? -eq 0 ]
+    then
+        printf "Cannot enable raspisms service."
+        return 1
+    fi
+
+    printf "Done.\n"
+    printf "\n"
 }
+
+
+do_database_config () {
+    if [ ! $DATABASE_AUTO_CONF ]
+    then
+        return 0
+    fi
+
+    if [ ! $DATABASE_ADMIN_USER ]
+    then
+        DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER -e "
+    else
+        DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER --password=$DATABASE_ADMIN_PASSWORD -e "
+    fi
+
+    printf "\n"
+    printf "Configure MySQL...\n"
+
+    printf "  Create database.\n"
+    echo $DB_INVOKE "CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;"
+    $DB_INVOKE "CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;"
+
+    printf "  Create user.\n"
+    echo $DB_INVOKE "DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'"
+    $DB_INVOKE "DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'"
+    echo $DB_INVOKE "CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';"
+    $DB_INVOKE "CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';"
+    
+    printf "  Grant privileges.\n"
+    echo $DB_INVOKE "GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;"
+    $DB_INVOKE "GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;"
+    
+    printf "  Flush privileges.\n"
+    echo $DB_INVOKE "FLUSH PRIVILEGES;"
+    $DB_INVOKE "FLUSH PRIVILEGES;"
+
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_database_config || exit 1
+do_apache_config || exit 1
+do_systemd_config || exit 1
+do_app_installation || exit 1

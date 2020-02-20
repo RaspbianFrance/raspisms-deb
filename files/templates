@@ -6,7 +6,7 @@ Description: RaspiSMS Configuration
 Template: raspisms/app_user
 Type: text
 Description: Configure the administrator account to create for RaspiSMS
- RaspiSMS need to create at least one administrator account in order to you to be able to connect.
+ This account will be the main account of RaspiSMS. You could later use it to create other accounts, and even remove it.
 
 Template: raspisms/app_user_email
 Type: string
@@ -26,3 +26,48 @@ Description: Should we automaticly configure Apache to make RaspiSMS available.
  RaspiSMS need to be made available using a web server like Apache or Nginx.
  If you wish we can automaticly configure Apache for you.
 
+Template: raspisms/systemd_auto_conf
+Type: boolean
+Default: true
+Description: Do you want to configure systemd ?
+ RaspiSMS can use systemd in order to start on boot and running in background.
+
+Template: raspisms/database_admin_user
+Type: string
+Default: root
+Description: Database admin user. 
+ RaspiSMS installation need to create a MySQL database and a MySQL user. To do so we need a MySQL account with database and user creation privileges.
+
+Template: raspisms/database_admin_password
+Type: password
+Description: Database admin password. If leave empty no password will be used, probably resulting in an error.
+ We will also need the password of the database admin user.
+
+Template: raspisms/database_auto_conf
+Type: boolean
+Default: true
+Description: Do you want to configure it?
+ RaspiSMS need to use a MySQL database. In order to configure RaspiSMS we will need some information regarding this database and your current MySQL information.
+
+Template: raspisms/database_host
+Type: string
+Default: localhost
+Description: Host of the database.
+ Hostname of the database server we want to use. Do not touch for local database.
+
+Template: raspisms/database_user
+Type: string
+Default: raspisms
+Description: Database user for RaspiSMS.
+ A database user with the provided name will be created with all rights on RaspiSMS database. Default : raspisms
+
+Template: raspisms/database_password
+Type: password
+Description: Password of the database user.
+ This password will be used by the database user created for RaspiSMS. Leave empty to generate a random password.
+
+Template: raspisms/database_name
+Type: string
+Default: raspisms
+Description: Database name for RaspiSMS.
+ A database with this name will be created with all rights to the RaspiSMS database user. Default : raspisms
