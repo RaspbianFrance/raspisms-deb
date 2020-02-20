@@ -1,0 +1,4 @@
+- edit rules to install in raspisms instead of raspisms2
+- manage rights properly after postinst
+- add postrm, etc.
+
