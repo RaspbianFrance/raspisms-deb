@@ -68,6 +68,29 @@ error_report () {
     exit 1
 }
 
+do_show_credentials () {
+    printf "\n\n"
+    printf "Here are the credentials of your RaspiSMS installation.\n"
+    printf "\n"
+    
+    if [ $DATABASE_AUTO_CONF ]
+    then
+        printf "####### DATABASE ######\n"
+        printf "$GENERATED_DATABASE_TEXT"
+        printf "\n"
+        printf "You can find those in $INSTALL_DIR/.credentials_db\n"
+        printf "#######################\n"
+        printf "\n"
+    fi
+
+    printf "####### RASPISMS USER ######\n"
+    printf "$GENERATED_USER_TEXT"
+    printf "\n"
+    printf "You can find those in $INSTALL_DIR/.credentials\n"
+    printf "############################\n"
+    printf "\n"
+}
+
 
 do_app_installation () {
     do_composer || return 1
@@ -76,7 +99,6 @@ do_app_installation () {
     if [ ! $DATABASE_AUTO_CONF ]; then return 0; fi
     
     do_phinx || return 1
-    do_create_user || return 1
 }
 
 
@@ -85,8 +107,8 @@ do_composer () {
     printf "Do composer installation...\n"
     
     cd $INSTALL_DIR
-    ./composer.phar self-update
-    ./composer.phar install
+    php composer.phar self-update
+    php composer.phar install
     
     printf "\n"
     printf "Done.\n"
@@ -99,7 +121,7 @@ do_phinx () {
     printf "Do Phinx migrations...\n"
     
     cd $INSTALL_DIR
-    vendor/bin/phinx migrate
+    php vendor/bin/phinx migrate
     
     printf "\n"
     printf "Done.\n"
@@ -147,32 +169,24 @@ do_app_config () {
 }
 
 
-do_create_user () {
+do_app_user () {
     printf "\n"
     printf "Create RaspiSMS default user.\n"
     
     cd $INSTALL_DIR
 
-    ./console.php controllers/internals/Console.php create_user --email="$APP_USER_EMAIL" --password="$APP_USER_PASSWORD" --admin="$APP_USER_ADMIN"
+    php console.php controllers/internals/Console.php create_update_user --email="$APP_USER_EMAIL" --password="$APP_USER_PASSWORD" --admin="$APP_USER_ADMIN"
 
     if [ ! $? -eq 0 ]
     then
         printf "\n"
         printf "Error during user generation."
         printf "\n"
-        exit 1
+        return 1
     fi
     
-    printf "  Create default RaspiSMS admin account : \n"
-    printf "  $GENERATED_USER_TEXT"
-
-    printf "$GENERATED_USER_TEXT" > ./.credentials
-    printf "\n"
-    printf "  #################################################################\n"
-    printf "  You can find those credentials in file $INSTALL_DIR/.credentials\n"
-    printf "  #################################################################\n"
-    printf "\n"
-
+    printf "$GENERATED_USER_TEXT" > "$INSTALL_DIR/.credentials"
+    
     printf "Done\n"
     printf "\n"
 }
@@ -276,6 +290,8 @@ do_database_config () {
     printf "  Flush privileges.\n"
     echo $DB_INVOKE "FLUSH PRIVILEGES;"
     $DB_INVOKE "FLUSH PRIVILEGES;"
+    
+    printf "$GENERATED_DATABASE_TEXT" > "$INSTALL_DIR/.credentials_db"
 
     printf "\n"
     printf "Done.\n"
@@ -283,7 +299,50 @@ do_database_config () {
 }
 
 
+do_user_and_permission () {
+    printf "\n"
+    printf "Manage files permissions.\n"
+    
+    cd $INSTALL_DIR
+
+    printf " Add user raspisms without any password. Only root can use it.\n"
+    useradd -M raspisms
+
+    if [ ! `getent group www-data` ]
+    then
+        GROUP="raspisms"
+    else
+        GROUP="www-data"
+    fi
+
+    printf "  Make all files belongs to raspisms:$GROUP.\n"
+    chown -R "raspisms:$GROUP" .
+    
+    printf "  Make all files 664.\n"
+    find "$INSTALL_DIR" -type f -exec chmod 664 {} \;
+    
+    printf "  Make all directories 775.\n"
+    find "$INSTALL_DIR" -type d -exec chmod 775 {} \;
+    
+    printf "  Make scripts 751.\n" 
+    chmod -f 751 scripts
+
+    printf "  Make console.php bin/* and vendor/bin/* 754.\n"
+    chmod -Rf 754 console.php bin vendor/bin
+
+    printf "  Make conf files 640"
+    chmod -f 640 env.*php phinx.yml .credentials .credentials_db
+    
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_app_user || exit 1
 do_database_config || exit 1
 do_apache_config || exit 1
 do_systemd_config || exit 1
 do_app_installation || exit 1
+do_user_and_permission || exit 1
+do_show_credentials || exit 1

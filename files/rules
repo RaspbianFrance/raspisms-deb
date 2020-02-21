@@ -2,7 +2,7 @@
 # See debhelper(7) (uncomment to enable)
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
-
+INSTALL_DIR = /opt/raspisms2
 
 # see FEATURE AREAS in dpkg-buildflags(1)
 #export DEB_BUILD_MAINT_OPTIONS = hardening=+all
@@ -24,6 +24,12 @@
 #	dh_auto_configure -- #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
 
 override_dh_auto_install:
-	install -d $(CURDIR)/debian/raspisms/opt/raspisms2
+	#Create install dir
+	install -d $(CURDIR)/debian/raspisms$(INSTALL_DIR)
+
+	#Copy all source files
 	find -maxdepth 1 ! -name 'debian' ! -name '.' -exec cp -r "{}" \
-		$(CURDIR)/debian/raspisms/opt/raspisms2 \;
+		$(CURDIR)/debian/raspisms$(INSTALL_DIR) \;
+
+	#Remove tests dir
+	rm -rf $(CURDIR)/debian/raspisms$(INSTALL_DIR)/tests
