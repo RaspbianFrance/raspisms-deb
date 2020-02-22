@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#Source debconf lib
+. /usr/share/debconf/confmodule
+
+SCRIPT_DIR=$(dirname $(readlink -f $0))
+
+### CONF VARS ###
+
+INSTALL_DIR="/opt/raspisms"
+
+
+### Functions ###
+error_report () {
+    printf "\n\nError on line $(caller)\n\n";
+    exit 1
+}
+
+
+do_delete_user () {
+    printf "\n"
+    printf "Delete user raspisms.\n"
+    
+    cd $INSTALL_DIR
+
+    deluser raspisms
+    delgroup raspisms
+
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_delete_user || exit 1
