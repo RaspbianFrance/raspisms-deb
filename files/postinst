@@ -9,7 +9,7 @@ IS_UPDATE=$(id -u raspisms) || false
 
 ### CONF VARS ###
 
-INSTALL_DIR="/var/www/raspisms"
+INSTALL_DIR="/usr/share/raspisms"
 
 #Apache
 APACHE_AVAILABLE_DIR="/etc/apache2/sites-available"
