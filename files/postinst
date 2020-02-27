@@ -362,7 +362,9 @@ do_user_and_permission () {
     chmod -f 751 scripts
 
     printf "  Make console.php bin/* and vendor/bin/* 754.\n"
-    chmod -Rf 754 console.php bin vendor/bin
+    find "console.php" -exec chmod 754 {} \;
+    find "bin" -exec chmod 754 {} \;
+    find "vendor/bin" -exec chmod 754 {} \;
 
     printf "  Make conf files 640"
     chmod -f 640 env.*php phinx.yml .credentials .credentials_db
