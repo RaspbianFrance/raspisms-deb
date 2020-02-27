@@ -56,3 +56,5 @@ do_debconf_purge () {
 
 do_delete_user || exit 1
 do_debconf_purge || exit 1
+
+#DEBHELPER#

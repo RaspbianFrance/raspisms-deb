@@ -9,7 +9,7 @@ raspisms: testsuite-autopkgtest-missing
 raspisms: out-of-date-standards-version
 raspisms: debian-rules-is-dh_make-template
 raspisms: not-using-po-debconf
-raspisms: translatable-debconf-templates
+raspisms: untranslatable-debconf-templates
 raspisms: composer-package-without-pkg-php-tools-builddep
 raspisms: source-is-missing
 raspisms: unused-override

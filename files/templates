@@ -35,7 +35,7 @@ Description: Database admin user:
 
 Template: raspisms/database_admin_password
 Type: password
-Description: Database admin password. If leave empty no password will be used.
+Description: Database admin password (if empty no password will be used):
  Password of the database admin user is needed. If you leave it empty no password will be used, probably resulting in an error.
 
 Template: raspisms/database_auto_conf
@@ -47,22 +47,22 @@ Description: Do you want to configure it?
 Template: raspisms/database_host
 Type: string
 Default: localhost
-Description: Host of the database.
+Description: Host of the database for RaspiSMS:
  Hostname of the database server you want to use. Do not touch for local database.
 
 Template: raspisms/database_user
 Type: string
 Default: raspisms
-Description: Database user for RaspiSMS.
+Description: Database username for RaspiSMS:
  A database user with the provided name will be created with all rights on RaspiSMS database. Default : raspisms
 
 Template: raspisms/database_password
 Type: password
-Description: Password of the database user.
+Description: Database password for RaspiSMS:
  This password will be used by the database user created for RaspiSMS. Leave empty to generate a random password.
 
 Template: raspisms/database_name
 Type: string
 Default: raspisms
-Description: Database name for RaspiSMS.
+Description: Database name for RaspiSMS:
  A database with this name will be created with all rights to the RaspiSMS database user. Default : raspisms
