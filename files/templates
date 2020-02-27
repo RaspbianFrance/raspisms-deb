@@ -22,9 +22,9 @@ Description: Enter the password address to use for RaspiSMS administrator accoun
 Template: raspisms/apache_auto_conf
 Type: boolean
 Default: true
-Description: Should we automaticly configure Apache to make RaspiSMS available.
+Description: Should Apache be configure Apache to make RaspiSMS available.
  RaspiSMS need to be made available using a web server like Apache or Nginx.
- If you wish we can automaticly configure Apache for you.
+ If you wish Apache can be automaticly configured.
 
 Template: raspisms/systemd_auto_conf
 Type: boolean
@@ -40,8 +40,8 @@ Description: Database admin user.
 
 Template: raspisms/database_admin_password
 Type: password
-Description: Database admin password. If leave empty no password will be used, probably resulting in an error.
- We will also need the password of the database admin user.
+Description: Database admin password. If leave empty no password will be used.
+ Password of the database admin user is needed. If you leave it empty no password will be used, probably resulting in an error.
 
 Template: raspisms/database_auto_conf
 Type: boolean

@@ -18,6 +18,10 @@ error_report () {
 
 
 do_delete_user () {
+    if [ ! "$1" == "remove" ]; then
+        return 0
+    fi
+
     printf "\n"
     printf "Delete user raspisms.\n"
     
@@ -32,4 +36,23 @@ do_delete_user () {
 }
 
 
+do_debconf_purge () {
+    if [ ! "$1" == "purge" ]; then
+        return 0
+    fi
+    
+    printf "\n"
+    printf "Purge debconf.\n"
+
+    if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+        db_purge
+    fi
+
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
 do_delete_user || exit 1
+do_debconf_purge || exit 1

@@ -4,6 +4,8 @@
 . /usr/share/debconf/confmodule
 
 SCRIPT_DIR=$(dirname $(readlink -f $0))
+IS_UPDATE=$(id -u raspisms) || false
+
 
 ### CONF VARS ###
 
@@ -69,6 +71,10 @@ error_report () {
 }
 
 do_show_credentials () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+    
     printf "\n\n"
     printf "Here are the credentials of your RaspiSMS installation.\n"
     printf "\n"
@@ -101,14 +107,18 @@ do_app_installation () {
     do_phinx || return 1
 }
 
-
 do_composer () {
     printf "\n"
-    printf "Do composer installation...\n"
-    
+    printf "Do composer...\n"
     cd $INSTALL_DIR
-    php composer.phar self-update
-    php composer.phar install
+    
+    if [ ! $IS_UPDATE ]; then
+        php composer.phar self-update
+        php composer.phar install
+    else
+        php composer.phar self-update
+        php composer.phar update
+    fi
     
     printf "\n"
     printf "Done.\n"
@@ -130,6 +140,10 @@ do_phinx () {
 
 
 do_app_config () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+
     printf "\n"
     printf "Do configuration of RaspiSMS app...\n"
 
@@ -170,6 +184,10 @@ do_app_config () {
 
 
 do_app_user () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+    
     printf "\n"
     printf "Create RaspiSMS default user.\n"
     
@@ -193,6 +211,10 @@ do_app_user () {
 
 
 do_apache_config () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+    
     if [ ! $APACHE_AUTO_CONF ]
     then
         return 0
@@ -224,6 +246,10 @@ do_apache_config () {
 
 
 do_systemd_config () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+    
     if [ ! $SYSTEMD_AUTO_CONF ]
     then
         return 0
@@ -258,6 +284,10 @@ do_systemd_config () {
 
 
 do_database_config () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+    
     if [ ! $DATABASE_AUTO_CONF ]
     then
         return 0
@@ -300,6 +330,10 @@ do_database_config () {
 
 
 do_user_and_permission () {
+    if [ $IS_UPDATE ]; then
+        return 0
+    fi
+    
     printf "\n"
     printf "Manage files permissions.\n"
     
