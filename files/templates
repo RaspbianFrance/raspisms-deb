@@ -3,26 +3,21 @@ Type: title
 Description: RaspiSMS Configuration
  Title of RaspiSMS configuration window.
 
-Template: raspisms/app_user
-Type: text
-Description: Configure the administrator account to create for RaspiSMS
- This account will be the main account of RaspiSMS. You could later use it to create other accounts, and even remove it.
-
 Template: raspisms/app_user_email
 Type: string
 Default: admin@example.com
-Description: Enter the e-mail address to use for RaspiSMS administrator account.
- You must provide an e-mail address to be used with this account.
+Description: E-mail address for RaspiSMS administrator account:
+ You must provide an e-mail address to be used for the RaspiSMS administrator account.
 
 Template: raspisms/app_user_password
 Type: password
-Description: Enter the password address to use for RaspiSMS administrator account.
+Description: Password for the RaspiSMS administrator account:
  You must provide a password to be used with this account.
 
 Template: raspisms/apache_auto_conf
 Type: boolean
 Default: true
-Description: Should Apache be configure Apache to make RaspiSMS available.
+Description: Should Apache be configure Apache to make RaspiSMS available?
  RaspiSMS need to be made available using a web server like Apache or Nginx.
  If you wish Apache can be automaticly configured.
 
@@ -35,8 +30,8 @@ Description: Do you want to configure systemd ?
 Template: raspisms/database_admin_user
 Type: string
 Default: root
-Description: Database admin user. 
- RaspiSMS installation need to create a MySQL database and a MySQL user. To do so we need a MySQL account with database and user creation privileges.
+Description: Database admin user: 
+ RaspiSMS installation need to create a MySQL database and a MySQL user. To do so RaspiSMS need a MySQL account with database and user creation privileges.
 
 Template: raspisms/database_admin_password
 Type: password
@@ -47,13 +42,13 @@ Template: raspisms/database_auto_conf
 Type: boolean
 Default: true
 Description: Do you want to configure it?
- RaspiSMS need to use a MySQL database. In order to configure RaspiSMS we will need some information regarding this database and your current MySQL information.
+ RaspiSMS need to use a MySQL database. In order to configure RaspiSMS need some information regarding this database and your current MySQL information.
 
 Template: raspisms/database_host
 Type: string
 Default: localhost
 Description: Host of the database.
- Hostname of the database server we want to use. Do not touch for local database.
+ Hostname of the database server you want to use. Do not touch for local database.
 
 Template: raspisms/database_user
 Type: string

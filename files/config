@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 #Source debconf lib
 . /usr/share/debconf/confmodule
@@ -45,9 +45,6 @@ do_database_conf () {
 
 do_app_user () {
     db_beginblock
-        db_reset raspisms/app_user
-        db_input medium raspisms/app_user
-
         db_reset raspisms/app_user_email
         db_input medium raspisms/app_user_email
 
