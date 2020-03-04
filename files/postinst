@@ -10,6 +10,7 @@ IS_UPDATE=$(id -u raspisms) || false
 ### CONF VARS ###
 
 INSTALL_DIR="/usr/share/raspisms"
+LOG_DIR="/var/log/raspisms"
 
 #Apache
 APACHE_AVAILABLE_DIR="/etc/apache2/sites-available"
@@ -352,12 +353,14 @@ do_user_and_permission () {
     printf "  Make all files belongs to raspisms:$GROUP.\n"
     find "$INSTALL_DIR" -type f -exec chown "raspisms:$GROUP" {} \;
     find "$INSTALL_DIR" -type d -exec chown "raspisms:$GROUP" {} \;
+    find "$LOG_DIR" -type d -exec chown "raspisms:$GROUP" {} \;
     
     printf "  Make all files 664.\n"
     find "$INSTALL_DIR" -type f -exec chmod 664 {} \;
     
     printf "  Make all directories 775.\n"
     find "$INSTALL_DIR" -type d -exec chmod 775 {} \;
+    find "$LOG_DIR" -type d -exec chmod 775 {} \;
     
     printf "  Make scripts 751.\n" 
     chmod -f 751 scripts
