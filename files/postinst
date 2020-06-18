@@ -118,12 +118,13 @@ do_show_credentials () {
 
 
 do_app_installation () {
-    do_composer || return 1
     do_app_config || return 1
+    do_composer || return 1
     
     if [ ! $DATABASE_AUTO_CONF ]; then return 0; fi
     
     do_phinx || return 1
+    do_app_user || return 1
 }
 
 do_composer () {
@@ -176,7 +177,7 @@ do_app_config () {
     
     printf "  Replace APP_SECRET : \n"
     find . -type f -name "*.dist.local" -exec replace '%APP_SECRET%' "$APP_SECRET" -- {} \;
-    
+   
     if [ "$DATABASE_AUTO_CONF" = "true" ]; then
         printf "  Replace APP_DATABASE_HOST : \n"
         find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_HOST%' "$APP_DATABASE_HOST" -- {} \;
@@ -343,21 +344,21 @@ do_database_config () {
     printf "Configure MySQL...\n"
 
     printf "  Create database.\n"
-    echo $DB_INVOKE "CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;"
+    echo $DB_INVOKE "\"CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;\""
     $DB_INVOKE "CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;"
 
     printf "  Create user.\n"
-    echo $DB_INVOKE "DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'"
-    $DB_INVOKE "DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'"
-    echo $DB_INVOKE "CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';"
+    echo $DB_INVOKE "\"DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'\""
+    $DB_INVOKE "DROP USER IF EXISTS '$APP_DATABASE_USER'@'%'"
+    echo $DB_INVOKE "\"CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';\""
     $DB_INVOKE "CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';"
     
     printf "  Grant privileges.\n"
-    echo $DB_INVOKE "GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;"
+    echo $DB_INVOKE "\"GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;\""
     $DB_INVOKE "GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;"
     
     printf "  Flush privileges.\n"
-    echo $DB_INVOKE "FLUSH PRIVILEGES;"
+    echo $DB_INVOKE "\"FLUSH PRIVILEGES;\""
     $DB_INVOKE "FLUSH PRIVILEGES;"
     
     printf "$GENERATED_DATABASE_TEXT" > "$INSTALL_DIR/.credentials_db"
@@ -417,11 +418,10 @@ do_user_and_permission () {
 }
 
 
-do_app_user || exit 1
 do_database_config || exit 1
+do_app_installation || exit 1
 do_apache_config || exit 1
 do_systemd_config || exit 1
-do_app_installation || exit 1
 do_user_and_permission || exit 1
 do_show_credentials || exit 1
 

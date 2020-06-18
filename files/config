@@ -11,7 +11,6 @@ do_title () {
 
 do_database_conf () {
     db_beginblock
-        db_reset raspisms/database_auto_conf
         db_input high raspisms/database_auto_conf || true
     db_endblock
     db_go
@@ -22,22 +21,16 @@ do_database_conf () {
     fi
 
     db_beginblock
-        db_reset raspisms/database_admin_user
         db_input critical raspisms/database_admin_user || true
         
-        db_reset raspisms/database_admin_password
         db_input critical raspisms/database_admin_password || true
 
-        db_reset raspisms/database_host
         db_input medium raspisms/database_host || true
         
-        db_reset raspisms/database_user
         db_input medium raspisms/database_user || true
         
-        db_reset raspisms/database_password
         db_input medium raspisms/database_password || true
         
-        db_reset raspisms/database_name
         db_input medium raspisms/database_name || true
     db_endblock
     db_go
@@ -45,10 +38,8 @@ do_database_conf () {
 
 do_app_user () {
     db_beginblock
-        db_reset raspisms/app_user_email
         db_input medium raspisms/app_user_email || true
 
-        db_reset raspisms/app_user_password
         db_input medium raspisms/app_user_password || true
     db_endblock
     db_go
@@ -56,7 +47,6 @@ do_app_user () {
 
 do_app_mail () {
     db_beginblock
-        db_reset raspisms/app_mail_config
         db_input high raspisms/app_mail_config || true
     db_endblock
     db_go
@@ -67,22 +57,16 @@ do_app_mail () {
     fi
 
     db_beginblock
-        db_reset raspisms/app_mail_smtp_user
         db_input high raspisms/app_mail_smtp_user || true
 
-        db_reset raspisms/app_mail_smtp_password
         db_input high raspisms/app_mail_smtp_password || true
         
-        db_reset raspisms/app_mail_smtp_host
         db_input high raspisms/app_mail_smtp_host || true
 
-        db_reset raspisms/app_mail_smtp_tls
         db_input high raspisms/app_mail_smtp_tls || true
 
-        db_reset raspisms/app_mail_smtp_port
         db_input high raspisms/app_mail_smtp_port || true
 
-        db_reset raspisms/app_mail_from
         db_input high raspisms/app_mail_from || true
     db_endblock
     db_go
@@ -90,7 +74,6 @@ do_app_mail () {
 
 do_apache_conf () {
     db_beginblock
-        db_reset raspisms/apache_auto_conf
         db_input medium raspisms/apache_auto_conf || true
     db_endblock
     db_go
@@ -98,7 +81,6 @@ do_apache_conf () {
 
 do_systemd_conf () {
     db_beginblock
-        db_reset raspisms/systemd_auto_conf
         db_input medium raspisms/systemd_auto_conf || true
     db_endblock
     db_go

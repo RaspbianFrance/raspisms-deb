@@ -41,10 +41,10 @@ do_debconf_purge () {
         return 0
     fi
     
-    printf "\n"
-    printf "Purge debconf.\n"
-
-    if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+    if [ -e /usr/share/debconf/confmodule ]; then
+        printf "\n"
+        printf "Purge debconf.\n"
+        db_reset raspisms
         db_purge
     fi
 
