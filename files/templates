@@ -16,7 +16,6 @@ Description: Password for the RaspiSMS administrator account:
 
 Template: raspisms/app_mail_config
 Type: boolean
-Default: true
 Description: Do you want to configure an SMTP account to use with RaspiSMS?
  RaspiSMS need to send mail and use an SMTP relay to do so. 
  If you wish RaspiSMS to be able to send mail you must configure this SMTP relay.
