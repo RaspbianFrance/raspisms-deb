@@ -54,6 +54,24 @@ db_reset raspisms/app_user_password
 if [ -z "$APP_USER_PASSWORD" ] ; then APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1) ; fi
 APP_USER_ADMIN=true
 
+#App Mail SMTP
+db_get raspisms/app_mail_config
+APP_MAIL_CONFIG=$RET
+if [ "$APP_MAIL_CONFIG" = "true" ]; then
+    db_get raspisms/app_mail_smtp_user
+    APP_MAIL_SMTP_USER=$RET
+    db_get raspisms/app_mail_smtp_password
+    APP_MAIL_SMTP_PASSWORD=$RET
+    db_get raspisms/app_mail_smtp_host
+    APP_MAIL_SMTP_HOST=$RET
+    db_get raspisms/app_mail_smtp_tls
+    APP_MAIL_SMTP_TLS=$RET
+    db_get raspisms/app_mail_smtp_port
+    APP_MAIL_SMTP_PORT=$RET
+    db_get raspisms/app_mail_from
+    APP_MAIL_FROM=$RET
+fi
+
 GENERATED_DATABASE_TEXT="Host: $APP_DATABASE_HOST\n\
 User: $APP_DATABASE_USER\n\
 Pass: $APP_DATABASE_PASS\n\
@@ -171,6 +189,26 @@ do_app_config () {
         
         printf "  Replace APP_DATABASE_PASS : \n"
         find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_PASS%' "$APP_DATABASE_PASS" -- {} \;
+    fi
+    
+    if [ "$APP_MAIL_CONFIG" = "true" ]; then
+        printf "  Replace APP_MAIL_SMTP_USER : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_USER%' "$APP_MAIL_SMTP_USER" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_PASS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_PASS%' "$APP_MAIL_SMTP_PASSWORD" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_HOST : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_HOST%' "$APP_MAIL_SMTP_HOST" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_TLS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_TLS%' "$APP_MAIL_SMTP_TLS" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_PORT : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_PORT%' "$APP_MAIL_SMTP_PORT" -- {} \;
+        
+        printf "  Replace APP_MAIL_FROM : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_FROM%' "$APP_MAIL_FROM" -- {} \;
     fi
 
     printf "  Remove .dist.local extensions.\n"

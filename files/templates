@@ -14,6 +14,43 @@ Type: password
 Description: Password for the RaspiSMS administrator account:
  You must provide a password to be used with this account.
 
+Template: raspisms/app_mail_config
+Type: boolean
+Default: true
+Description: Do you want to configure an SMTP account to use with RaspiSMS?
+ RaspiSMS need to send mail and use an SMTP relay to do so. 
+ If you wish RaspiSMS to be able to send mail you must configure this SMTP relay.
+
+Template: raspisms/app_mail_smtp_user
+Type: string
+Description: SMTP user :
+ You must provide the username of your SMTP account.
+
+Template: raspisms/app_mail_smtp_password
+Type: password
+Description: SMTP password :
+ You must provide the password of your SMTP account.
+
+Template: raspisms/app_mail_smtp_host
+Type: string
+Description: SMTP host :
+ You must provide the hostname of your SMTP server.
+
+Template: raspisms/app_mail_smtp_tls
+Type: boolean
+Description: Enable TLS :
+ Should the SMTP server used TLS.
+
+Template: raspisms/app_mail_smtp_port
+Type: string
+Description: SMTP port :
+ You must provide the PORT of your SMTP server.
+
+Template: raspisms/app_mail_from
+Type: string
+Description: Email FROM :
+ You must provide the e-mail address to use for the From header of emails sent by RaspiSMS.
+
 Template: raspisms/apache_auto_conf
 Type: boolean
 Default: true

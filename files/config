@@ -54,6 +54,40 @@ do_app_user () {
     db_go
 }
 
+do_app_mail () {
+    db_beginblock
+        db_reset raspisms/app_mail_config
+        db_input high raspisms/app_mail_config
+    db_endblock
+    db_go
+
+    db_get raspisms/app_mail_config
+    if [ "$RET" = "false" ]; then
+        return 0
+    fi
+
+    db_beginblock
+        db_reset raspisms/app_mail_smtp_user
+        db_input medium raspisms/app_mail_smtp_user
+
+        db_reset raspisms/app_mail_smtp_password
+        db_input medium raspisms/app_mail_smtp_password
+        
+        db_reset raspisms/app_mail_smtp_host
+        db_input medium raspisms/app_mail_smtp_host
+
+        db_reset raspisms/app_mail_smtp_tls
+        db_input medium raspisms/app_mail_smtp_tls
+
+        db_reset raspisms/app_mail_smtp_port
+        db_input medium raspisms/app_mail_smtp_port
+
+        db_reset raspisms/app_mail_from
+        db_input medium raspisms/app_mail_from
+    db_endblock
+    db_go
+}
+
 do_apache_conf () {
     db_beginblock
         db_reset raspisms/apache_auto_conf
@@ -75,5 +109,6 @@ do_systemd_conf () {
 do_title
 do_database_conf
 do_app_user
+do_app_mail
 do_apache_conf
 do_systemd_conf
