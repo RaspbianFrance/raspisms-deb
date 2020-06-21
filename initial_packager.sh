@@ -162,16 +162,6 @@ sed -i '/^#.*/d' ./copyright
 printf "Done.\n\n"
 
 
-#Update changelog file
-printf "Update changelog file...\n"
-CHANGELOG_HEAD=`head -n1 ./changelog`
-CHANGELOG_TAIL=`tail -n1 ./changelog`
-
-printf "$CHANGELOG_HEAD\n\n$CHANGELOG_MESSAGE\n\n$CHANGELOG_TAIL\n" > ./changelog
-
-printf "OK.\n\n"
-
-
 #Create manpages
 #cp "$SCRIPT_DIR/files/manpage.1" "./$PACKAGE_NAME.1"
 #echo "docs/$PACKAGE_NAME.1" > "./$PACKAGE_NAME.manpages"
