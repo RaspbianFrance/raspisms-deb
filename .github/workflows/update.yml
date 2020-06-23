@@ -25,6 +25,11 @@ jobs:
     - name: Update .deb package
       run: sudo $GITHUB_WORKSPACE/update_package.sh
     
+    - name: Config git
+      run: |
+        git config --global user.email "raspbianfrance@gmail.com"
+        git config --global user.name "Github Actions Bot"
+    
     - name: Add changes and commit
       run: |
         git add --all
