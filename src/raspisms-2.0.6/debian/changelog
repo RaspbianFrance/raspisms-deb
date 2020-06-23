@@ -1,17 +1,5 @@
-raspisms (2.0.6) bionic; urgency=medium
-
-  * v2.0.6          fix transfer
-
- -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Jun 2020 17:54:01 +0000
-
-raspisms (2.0.5) bionic; urgency=medium
-
-  * v2.0.5          fix missing accent
-
- -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Jun 2020 15:41:15 +0200
-
-raspisms (2.0.4-1) unstable; urgency=medium
+raspisms (2.0.6-1) unstable; urgency=medium
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 
- -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Jun 2020 15:39:37 +0200
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Jun 2020 20:51:20 +0200

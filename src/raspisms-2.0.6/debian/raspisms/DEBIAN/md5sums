@@ -1,4 +1,4 @@
-48d5825a4d77401c25138e8841f4d374  usr/share/doc/raspisms/changelog.gz
+167c54f60059672ef67053b8fe67159b  usr/share/doc/raspisms/changelog.Debian.gz
 3a40afaf3e299f49a5ee785b6dfcd1d1  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 e1d282db050aabf61e7fb1c996808b24  usr/share/raspisms/.htaccess
@@ -61,10 +61,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-00ef5cdcb2b54359d6684c0593e9f8e1  usr/share/raspisms/assets/img/favicon.png
+619ac0a6e71eea8c5935337a09281b5f  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-ffd1f61ba6513b5bc0bc9cd00659b62f  usr/share/raspisms/assets/img/logo.png
+119014da02137087ca9e2e1ddc9a7e45  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png

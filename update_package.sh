@@ -53,7 +53,7 @@ then
     printf "This version of package already exists : $PACKAGE_DIR\n"
     cd ../
     rm -rf ./git
-    exit 1
+    exit 0
 fi
 
 cd .. ; cp -r git $PACKAGE_NAME_V ; rm -rf git
@@ -105,3 +105,6 @@ cd "./src/$PACKAGE_NAME_V"
 echo `pwd`
 dpkg-buildpackage -us -uc
 printf "Done.\n"
+
+#Copy deb files to final dir
+$SCRIPT_DIR/move_packages.sh

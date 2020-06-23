@@ -184,3 +184,6 @@ rm ./"$PACKAGE_NAME"-doc*
 cd $PACKAGE_DIR
 dpkg-buildpackage -us -uc
 cd ..
+
+#Copy deb files to final dir
+$SCRIPT_DIR/move_packages.sh
