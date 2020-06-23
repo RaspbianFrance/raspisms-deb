@@ -1,0 +1,15 @@
+raspisms: embedded-javascript-library
+raspisms: maintainer-script-calls-systemctl
+raspisms: maintainer-script-ignores-errors
+raspisms: duplicate-font-file
+raspisms: embedded-javascript-library
+raspisms: extra-license-file
+raspisms: ored-depends-on-obsolete-package
+raspisms: testsuite-autopkgtest-missing
+raspisms: out-of-date-standards-version
+raspisms: debian-rules-is-dh_make-template
+raspisms: not-using-po-debconf
+raspisms: untranslatable-debconf-templates
+raspisms: composer-package-without-pkg-php-tools-builddep
+raspisms: source-is-missing
+raspisms: unused-override

@@ -1,0 +1,34 @@
+Format: 1.8
+Date: Sun, 21 Jun 2020 15:41:15 +0200
+Source: raspisms
+Binary: raspisms
+Architecture: source all
+Version: 2.0.5
+Distribution: bionic
+Urgency: medium
+Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Changed-By: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Description:
+ raspisms   - Web application allowing to send and receive GSM messages
+Changes:
+ raspisms (2.0.5) bionic; urgency=medium
+ .
+   * v2.0.5          fix missing accent
+Checksums-Sha1:
+ 57240147bfd706d2b6b51ff5048cc478abbeb2ae 948 raspisms_2.0.5.dsc
+ 9524a256dbcde4ea6cebaa355c8619b5c0710a18 4776987 raspisms_2.0.5.orig.tar.gz
+ 35b785eb2525aaa16dec79f480442ccd4c64e73f 6008 raspisms_2.0.5.debian.tar.xz
+ 5c68f8b66010f498c94c09c9e8bd714e21cc4207 1603888 raspisms_2.0.5_all.deb
+ 2852849750e416489c581cb8bf848e19418a24b2 5470 raspisms_2.0.5_amd64.buildinfo
+Checksums-Sha256:
+ ddbdf61a037a2032bae7f3273738876cde7625085adfec4e5507a19f2eb19ba3 948 raspisms_2.0.5.dsc
+ 78fd27396b0a913529d6a8c29fcf5f4bb84278e2f893b8ba6fc48b5212752a69 4776987 raspisms_2.0.5.orig.tar.gz
+ 9ba19a433150503534c38627a90649ccfb88fde93e4251bfe2f16d34af8cbc54 6008 raspisms_2.0.5.debian.tar.xz
+ b3375ea7031b51c6068e31b2be410786a9e1e2a658e89b86b67db07d6db98e44 1603888 raspisms_2.0.5_all.deb
+ 9bf7eba777d96a8e1b61f1935f98f6acefc930b4bf6e21734eb9ae25c5e89880 5470 raspisms_2.0.5_amd64.buildinfo
+Files:
+ e4e088a7fe8e257bd9540cf8ceb7caca 948 web optional raspisms_2.0.5.dsc
+ 9c965c5064360b28948329931a0bf08c 4776987 web optional raspisms_2.0.5.orig.tar.gz
+ 07ee82156f380d5d936b6eb27a9efb76 6008 web optional raspisms_2.0.5.debian.tar.xz
+ ccd5823fc224d1dbe4315940775c460e 1603888 web optional raspisms_2.0.5_all.deb
+ 6527f4d2f7cc0515a4881f66fb26a77d 5470 web optional raspisms_2.0.5_amd64.buildinfo
