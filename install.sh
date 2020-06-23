@@ -9,5 +9,5 @@ error_report () {
 }
 
 apt update -y
-apt install -y build-essential devscripts
+apt install -y build-essential devscripts debhelper
 
