@@ -1,5 +1,0 @@
-parameters:
-    reportUnmatchedIgnoredErrors: false
-
-    ignoreErrors:
-        - '#Constant RASPISMS_[a-zA-Z0-9\\_]+ not found.#'

@@ -1,0 +1,34 @@
+Format: 1.8
+Date: Tue, 23 Jun 2020 17:54:01 +0000
+Source: raspisms
+Binary: raspisms
+Architecture: source all
+Version: 2.0.6
+Distribution: bionic
+Urgency: medium
+Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Changed-By: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Description:
+ raspisms   - Web application allowing to send and receive GSM messages
+Changes:
+ raspisms (2.0.6) bionic; urgency=medium
+ .
+   * v2.0.6          fix transfer
+Checksums-Sha1:
+ 1665f48207a058b9962ce2d456e9dfab51122e7f 948 raspisms_2.0.6.dsc
+ c3d6ad4185d2efcd397655067a8bbca5426a1137 4781917 raspisms_2.0.6.orig.tar.gz
+ 026d9867108423cab90ebaa81a50e39aac5a5cd9 6020 raspisms_2.0.6.debian.tar.xz
+ 18acc86d0eaaab935b535e108b15a488deeb4f5b 1604064 raspisms_2.0.6_all.deb
+ 51d858589d856a32c0049468d129c6ea0aad4bc4 6688 raspisms_2.0.6_amd64.buildinfo
+Checksums-Sha256:
+ 72c7f852680f544212270e45de5f24c91df1981d72726aa71d7c27af088012b3 948 raspisms_2.0.6.dsc
+ 2123c97857009ad9eccb584b5d37c4341ab0ad7e3c598f9c6378f36eec4f6ba2 4781917 raspisms_2.0.6.orig.tar.gz
+ 97a66ab943737cc58eb638a69aaabceafacf651d1b2f67eafbaa075e0bde6082 6020 raspisms_2.0.6.debian.tar.xz
+ 65d3362a87e11ff030608b0c0afb6a982497880cde2c8b7c3c07bb57d88bbd2d 1604064 raspisms_2.0.6_all.deb
+ 76477c392a9ba01a8110c921c12a171942560806686e5f03692ef15f854211b2 6688 raspisms_2.0.6_amd64.buildinfo
+Files:
+ 204a314dc34c7ce631e120cfa3bf30bb 948 web optional raspisms_2.0.6.dsc
+ 6716ecadd427e77d80c5abb140d89fa7 4781917 web optional raspisms_2.0.6.orig.tar.gz
+ 5f78351ea1279a17d3cb323ab804bd89 6020 web optional raspisms_2.0.6.debian.tar.xz
+ 5f1d6c6a57c2ea0e1840f4efb8f20776 1604064 web optional raspisms_2.0.6_all.deb
+ e49b8157b38be8606fdf3b5317174e22 6688 web optional raspisms_2.0.6_amd64.buildinfo
