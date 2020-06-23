@@ -1,6 +1,6 @@
 # This is a basic workflow to generate a new .deb package on every update of raspisms master repo
 
-name: CI
+name: Build Deb
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
