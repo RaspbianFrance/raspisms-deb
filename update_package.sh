@@ -34,7 +34,7 @@ git clone $GIT_REPOSITORY ./git && cd ./git
 git checkout $GIT_BRANCH
 
 #Find last tag for version number
-VERSION_NUMBER=`git tag | tail -1`
+VERSION_NUMBER=`git tag | sort -V | tail -1`
 VERSION_MESSAGE=`git tag -n1000 $VERSION_NUMBER`
 
 if [[ $VERSION_NUMBER == v* ]]
