@@ -1,0 +1,17 @@
+raspisms (2.0.10) bionic; urgency=medium
+
+  * v2.0.10         Add disabling of account deletion
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 24 Jun 2020 17:52:39 +0000
+
+raspisms (2.0.9) bionic; urgency=medium
+
+  * v2.0.9          Update trigger_deb_build.yml
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Jun 2020 19:16:38 +0000
+
+raspisms (2.0.6-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Jun 2020 20:51:20 +0200
