@@ -77,13 +77,13 @@ do_delete_database () {
 
     printf "\n"
     printf "Remove database...\n"
-    echo $DB_INVOKE "\"DROP DATABASE \`$APP_DATABASE_NAME\`;\""
-    $DB_INVOKE "\"DROP DATABASE \`$APP_DATABASE_NAME\`;\""
+    echo $DB_INVOKE "\"DROP DATABASE \`$APP_DATABASE_NAME\`\""
+    $DB_INVOKE "DROP DATABASE \`$APP_DATABASE_NAME\`"
     printf "Done.\n"
 
     printf "Remove user...\n"
-    echo $DB_INVOKE "\"DROP USER '$APP_DATABASE_USER'@'%';\""
-    $DB_INVOKE "\"DROP USER '$APP_DATABASE_USER'@'%';\""
+    echo $DB_INVOKE "\"DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'\""
+    $DB_INVOKE "DROP USER IF EXISTS '$APP_DATABASE_USER'@'%'"
     printf "Done.\n"
 
     printf "\n"
