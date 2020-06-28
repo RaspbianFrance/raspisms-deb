@@ -9,6 +9,16 @@ SCRIPT_DIR=$(dirname $(readlink -f $0))
 
 INSTALL_DIR="/usr/share/raspisms"
 
+#Database & app database
+db_get raspisms/database_admin_user
+DATABASE_ADMIN_USER=$RET
+db_get raspisms/database_admin_password
+DATABASE_ADMIN_PASSWORD=$RET
+db_get raspisms/database_host
+APP_DATABASE_HOST=$RET
+db_get raspisms/database_name
+APP_DATABASE_NAME=$RET
+
 
 ### Functions ###
 error_report () {
@@ -18,7 +28,7 @@ error_report () {
 
 
 do_delete_user () {
-    if [ ! "$1" == "remove" ]; then
+    if [ ! "$1" == "remove" ] && [ ! "$1" == "purge" ]; then
         return 0
     fi
 
@@ -53,8 +63,35 @@ do_debconf_purge () {
     printf "\n"
 }
 
+do_delete_database () {
+    if [ ! "$1" == "purge" ]; then
+        return 0
+    fi
+
+    if [ ! $DATABASE_ADMIN_PASSWORD ]
+    then
+        DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER -e "
+    else
+        DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER --password=$DATABASE_ADMIN_PASSWORD -e "
+    fi
+
+    printf "\n"
+    printf "Remove database...\n"
+    echo $DB_INVOKE "\"DROP DATABASE \`$APP_DATABASE_NAME\`;\""
+    $DB_INVOKE "\"DROP DATABASE \`$APP_DATABASE_NAME\`;\""
+    printf "Done.\n"
+
+    printf "Remove user...\n"
+    echo $DB_INVOKE "\"DROP USER '$APP_DATABASE_USER'@'%';\""
+    $DB_INVOKE "\"DROP USER '$APP_DATABASE_USER'@'%';\""
+    printf "Done.\n"
+
+    printf "\n"
+}
+
 
 do_delete_user || exit 1
+do_delete_database || exit 1
 do_debconf_purge || exit 1
 
 #DEBHELPER#

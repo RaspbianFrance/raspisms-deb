@@ -33,7 +33,6 @@ db_get raspisms/database_admin_user
 DATABASE_ADMIN_USER=$RET
 db_get raspisms/database_admin_password
 DATABASE_ADMIN_PASSWORD=$RET
-db_reset raspisms/database_admin_password
 db_get raspisms/database_host
 APP_DATABASE_HOST=$RET
 db_get raspisms/database_name
@@ -333,7 +332,7 @@ do_database_config () {
         return 0
     fi
 
-    if [ ! $DATABASE_ADMIN_USER ]
+    if [ ! $DATABASE_ADMIN_PASSWORD ]
     then
         DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER -e "
     else
