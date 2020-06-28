@@ -28,7 +28,7 @@ error_report () {
 
 
 do_delete_user () {
-    if [ ! "$1" == "remove" ] && [ ! "$1" == "purge" ]; then
+    if [ "$1" != "remove" ]; then
         return 0
     fi
 
@@ -47,7 +47,7 @@ do_delete_user () {
 
 
 do_debconf_purge () {
-    if [ ! "$1" == "purge" ]; then
+    if [ "$1" != "purge" ]; then
         return 0
     fi
     
@@ -64,7 +64,7 @@ do_debconf_purge () {
 }
 
 do_delete_database () {
-    if [ ! "$1" == "purge" ]; then
+    if [ "$1" != "purge" ]; then
         return 0
     fi
 
@@ -90,8 +90,8 @@ do_delete_database () {
 }
 
 
-do_delete_user || exit 1
-do_delete_database || exit 1
-do_debconf_purge || exit 1
+do_delete_user $1 || exit 1
+do_delete_database $1 || exit 1
+do_debconf_purge $1 || exit 1
 
 #DEBHELPER#
