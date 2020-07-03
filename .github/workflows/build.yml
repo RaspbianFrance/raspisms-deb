@@ -22,10 +22,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install devtools
-      run: sudo $GITHUB_WORKSPACE/install.sh
+      run: sudo $GITHUB_WORKSPACE/scripts/install.sh
 
     - name: Update .deb package
-      run: sudo $GITHUB_WORKSPACE/update_package.sh
+      run: sudo $GITHUB_WORKSPACE/scritps/update_package.sh
     
     - name: Config git
       run: |
@@ -35,7 +35,7 @@ jobs:
     - name: Add changes and commit
       run: |
         git add --all
-        git commit -m "Update to latest version"
+        git commit -m "Update to latest version" || exit 0
         
     - name: Push changes
       uses: ad-m/github-push-action@master
