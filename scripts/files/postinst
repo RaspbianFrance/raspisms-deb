@@ -202,7 +202,7 @@ do_app_config () {
         find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_HOST%' "$APP_MAIL_SMTP_HOST" -- {} \;
         
         printf "  Replace APP_MAIL_SMTP_TLS : \n"
-        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_TLS%' "$APP_MAIL_SMTP_TLS" -- {} \;
+        find . -type f -name "*.dist.local" -exec replace "'%APP_MAIL_SMTP_TLS%'" "$APP_MAIL_SMTP_TLS" -- {} \;
         
         printf "  Replace APP_MAIL_SMTP_PORT : \n"
         find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_PORT%' "$APP_MAIL_SMTP_PORT" -- {} \;
