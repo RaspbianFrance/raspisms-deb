@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#############
+### CONST ###
+#############
+SCRIPT_DIR=$(dirname $(readlink -f $0))
+cd $SCRIPT_DIR
+echo $SCRIPT_DIR
+
 #Import conf
 . ./package.conf
 
@@ -10,12 +17,6 @@ error_report () {
     printf "\n\nError on line $(caller)\n\n";
     exit 1
 }
-
-#############
-### CONST ###
-#############
-SCRIPT_DIR=$(dirname $(readlink -f $0))
-echo $SCRIPT_DIR
 
 PACKAGES_DIR="$SCRIPT_DIR/../packages"
 

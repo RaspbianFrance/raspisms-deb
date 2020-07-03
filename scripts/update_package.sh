@@ -1,6 +1,14 @@
 #!/bin/bash
 
 #Import conf
+
+#############
+### CONST ###
+#############
+SCRIPT_DIR=$(dirname $(readlink -f $0))
+cd $SCRIPT_DIR
+echo $SCRIPT_DIR
+
 . ./package.conf
 
 trap error_report ERR
@@ -10,12 +18,6 @@ error_report () {
     printf "\n\nError on line $(caller)\n\n";
     exit 1
 }
-
-#############
-### CONST ###
-#############
-SCRIPT_DIR=$(dirname $(readlink -f $0))
-echo $SCRIPT_DIR
 
 cd "$SCRIPT_DIR/src"
 

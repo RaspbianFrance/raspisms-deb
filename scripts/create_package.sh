@@ -1,16 +1,16 @@
 #!/bin/bash
 
-trap error_report ERR
-
 #############
 ### CONST ###
 #############
 SCRIPT_DIR=$(dirname $(readlink -f $0))
+cd $SCRIPT_DIR
 echo $SCRIPT_DIR
 
 #Import conf
-. $SCRIPT_DIR/package.conf
+. ./package.conf
 
+trap error_report ERR
 
 ### Functions ###
 error_report () {
@@ -60,13 +60,17 @@ create_line_or_append () {
     fi
 }
 
+
 #############
 ### CLEAN ###
 #############
 echo "CLEANING..."
 
 #Delete and remake sourcecode directory
-rm -rf $SCRIPT_DIR/src ; mkdir $SCRIPT_DIR/src
+rm -rf ./src ; mkdir ./src
+
+#Delete *.tar.gz
+rm -f *.tar.gz
 
 printf "OK.\n\n"
 
@@ -77,7 +81,7 @@ printf "OK.\n\n"
 ####################
 echo "PULLING UPSTREAM..."
 
-git clone $GIT_REPOSITORY $SCRIPT_DIR/src/git && cd $SCRIPT_DIR/src/git
+git clone $GIT_REPOSITORY ./src/git && cd ./src/git
 git checkout $GIT_BRANCH
 
 #Find last tag for version number
