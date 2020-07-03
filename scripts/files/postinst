@@ -332,6 +332,10 @@ do_database_config () {
         return 0
     fi
 
+    printf "Start Mysql...\n"
+    service mysql start
+    printf "Done.\n"
+
     if [ ! $DATABASE_ADMIN_PASSWORD ]
     then
         DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER -e "

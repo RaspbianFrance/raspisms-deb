@@ -25,7 +25,7 @@ jobs:
       run: sudo $GITHUB_WORKSPACE/scripts/install.sh
 
     - name: Update .deb package
-      run: sudo $GITHUB_WORKSPACE/scritps/update_package.sh
+      run: sudo $GITHUB_WORKSPACE/scripts/update_package.sh
     
     - name: Config git
       run: |
