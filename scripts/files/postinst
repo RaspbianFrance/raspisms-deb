@@ -264,6 +264,10 @@ do_apache_config () {
         return 0
     fi
 
+    printf "Start apache if not started\n"
+    service apache2 start
+    printf "Done.\n"
+
     printf "\n"
     printf "Configure apache2 to make RaspiSMS available over http://localhost/raspisms\n"
     
