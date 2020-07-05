@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+trap error_report ERR
 
 #Source debconf lib
 . /usr/share/debconf/confmodule
@@ -95,3 +97,4 @@ do_delete_database $1 || exit 1
 do_debconf_purge $1 || exit 1
 
 #DEBHELPER#
+exit 0

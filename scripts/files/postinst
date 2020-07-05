@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+trap error_report ERR
 
 #Source debconf lib
 . /usr/share/debconf/confmodule
@@ -433,3 +435,4 @@ do_user_and_permission || exit 1
 do_show_credentials || exit 1
 
 #DEBHELPER#
+exit 0

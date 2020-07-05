@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+trap error_report ERR
 
 #############
 ### CONST ###
@@ -9,8 +11,6 @@ echo $SCRIPT_DIR
 
 #Import conf
 . ./package.conf
-
-trap error_report ERR
 
 ### Functions ###
 error_report () {
@@ -30,9 +30,10 @@ create_line_or_replace () {
     local replace=$3
 
     #check if line exists
-    grep -q "^$line_start: .*" "$file"
+    ERROR=false
+    grep -q "^$line_start: .*" "$file" || ERROR=true
 
-    if [ $? -eq 0 ]
+    if [ "$ERROR" = false ]
     then
         printf "    Update value of $line_start to \"$replace\"\n";
         sed -i "s/^$line_start: .*/$line_start: ${replace//\//\\/}/g" "$file"
@@ -48,9 +49,10 @@ create_line_or_append () {
     local append=$3
 
     #check if line exists
-    grep -q "^$line_start: .*" "$file"
-    
-    if [ $? -eq 0 ]
+    ERROR=false
+    grep -q "^$line_start: .*" "$file" || ERROR=true
+
+    if [ "$ERROR" = false ]
     then
         printf "    Append \"$append\" to $line_start\n";
         sed -i "s/^$line_start: \(.*\)/$line_start: \1, ${append//\//\\/}/g" "$file"
@@ -141,7 +143,6 @@ uncomment_line "./control" "Vcs-Browser"
 create_line_or_replace "./control" "Vcs-Browser" "$GIT_REPOSITORY"
 
 create_line_or_replace "./control" "Description" "$CONTROL_DESCRIPTION_SHORT\n$CONTROL_DESCRIPTION_LONG"
-
 create_line_or_append "./control" "Pre-Depends" "$CONTROL_PRE_DEPENDS"
 create_line_or_append "./control" "Depends" "$CONTROL_DEPENDS"
 create_line_or_append "./control" "Recommends" "$CONTROL_RECOMMENDS"

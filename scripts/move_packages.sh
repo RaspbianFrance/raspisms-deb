@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+trap error_report ERR
 
 #############
 ### CONST ###
@@ -9,8 +11,6 @@ echo $SCRIPT_DIR
 
 #Import conf
 . ./package.conf
-
-trap error_report ERR
 
 ### Functions ###
 error_report () {
