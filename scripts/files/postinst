@@ -92,7 +92,7 @@ error_report () {
 }
 
 do_show_credentials () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
     
@@ -134,7 +134,7 @@ do_composer () {
     printf "Do composer...\n"
     cd $INSTALL_DIR
     
-    if [ ! $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = false ]; then
         php composer.phar self-update
         php composer.phar install
     else
@@ -162,7 +162,7 @@ do_phinx () {
 
 
 do_app_config () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
 
@@ -226,7 +226,7 @@ do_app_config () {
 
 
 do_app_user () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
     
@@ -253,7 +253,7 @@ do_app_user () {
 
 
 do_apache_config () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
     
@@ -292,7 +292,7 @@ do_apache_config () {
 
 
 do_systemd_config () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
     
@@ -330,7 +330,7 @@ do_systemd_config () {
 
 
 do_database_config () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
     
@@ -380,7 +380,7 @@ do_database_config () {
 
 
 do_user_and_permission () {
-    if [ $IS_UPDATE ]; then
+    if [ "$IS_UPDATE" = true ]; then
         return 0
     fi
     
