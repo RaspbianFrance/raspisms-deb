@@ -83,8 +83,6 @@ GENERATED_USER_TEXT="Email: $APP_USER_EMAIL\n\
 Password: $APP_USER_PASSWORD\n\
 Admin: $APP_USER_ADMIN\n"
 
-trap error_report ERR
-
 ### Functions ###
 error_report () {
     printf "\n\nError on line $(caller)\n\n";
