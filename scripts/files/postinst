@@ -6,7 +6,8 @@ trap error_report ERR
 . /usr/share/debconf/confmodule
 
 SCRIPT_DIR=$(dirname $(readlink -f $0))
-IS_UPDATE=$(id -u raspisms) || false
+IS_UPDATE=true
+id -u raspisms || IS_UPDATE=false
 
 
 ### CONF VARS ###
