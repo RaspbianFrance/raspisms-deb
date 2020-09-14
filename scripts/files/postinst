@@ -418,7 +418,11 @@ do_user_and_permission () {
     find "vendor/bin" -exec chmod 754 {} \;
 
     printf "  Make conf files 640"
-    chmod -f 640 env.*php phinx.yml .credentials .credentials_db
+    chmod -f 640 env.*php phinx.yml
+    
+    printf "  Make credentials files 700 and root"
+    chmod -f 700 .credentials .credentials_db
+    chown root .credentials .credentials_db
     
     printf "\n"
     printf "Done.\n"
