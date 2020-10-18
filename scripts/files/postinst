@@ -323,6 +323,16 @@ do_systemd_config () {
     fi
 
     printf "Done.\n"
+
+
+    printf " Start raspisms.service\n"
+    systemctl start raspisms.service
+    if [ ! $? -eq 0 ]
+    then
+        printf "Cannot start raspisms service."
+        return 1
+    fi
+    printf "Done.\n"
     printf "\n"
 }
 
@@ -433,8 +443,8 @@ do_user_and_permission () {
 do_database_config || exit 1
 do_app_installation || exit 1
 do_apache_config || exit 1
-do_systemd_config || exit 1
 do_user_and_permission || exit 1
+do_systemd_config || exit 1
 do_show_credentials || exit 1
 
 #DEBHELPER#
