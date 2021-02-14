@@ -1,0 +1,96 @@
+#!/bin/bash -e
+
+#Source debconf lib
+. /usr/share/debconf/confmodule
+    
+### FUNCTIONS ###
+do_title () {
+    db_settitle raspisms/title
+}
+
+
+do_database_conf () {
+    db_beginblock
+        db_input high raspisms/database_auto_conf || true
+    db_endblock
+    db_go
+
+    db_get raspisms/database_auto_conf
+    if [ "$RET" = "false" ]; then
+        return 0
+    fi
+
+    db_beginblock
+        db_input critical raspisms/database_admin_user || true
+        
+        db_input critical raspisms/database_admin_password || true
+
+        db_input medium raspisms/database_host || true
+        
+        db_input medium raspisms/database_user || true
+        
+        db_input medium raspisms/database_password || true
+        
+        db_input medium raspisms/database_name || true
+    db_endblock
+    db_go
+}
+
+do_app_user () {
+    db_beginblock
+        db_input medium raspisms/app_user_email || true
+
+        db_input medium raspisms/app_user_password || true
+    db_endblock
+    db_go
+}
+
+do_app_mail () {
+    db_beginblock
+        db_input high raspisms/app_mail_config || true
+    db_endblock
+    db_go
+
+    db_get raspisms/app_mail_config
+    if [ "$RET" = "false" ]; then
+        return 0
+    fi
+
+    db_beginblock
+        db_input high raspisms/app_mail_smtp_user || true
+
+        db_input high raspisms/app_mail_smtp_password || true
+        
+        db_input high raspisms/app_mail_smtp_host || true
+
+        db_input high raspisms/app_mail_smtp_tls || true
+
+        db_input high raspisms/app_mail_smtp_port || true
+
+        db_input high raspisms/app_mail_from || true
+    db_endblock
+    db_go
+}
+
+do_apache_conf () {
+    db_beginblock
+        db_input medium raspisms/apache_auto_conf || true
+    db_endblock
+    db_go
+}
+
+do_systemd_conf () {
+    db_beginblock
+        db_input medium raspisms/systemd_auto_conf || true
+    db_endblock
+    db_go
+}
+
+
+#Main
+do_title
+do_database_conf
+do_app_user
+do_app_mail
+do_apache_conf
+do_systemd_conf

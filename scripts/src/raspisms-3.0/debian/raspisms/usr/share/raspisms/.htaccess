@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^assets - [L]
+RewriteRule ^.well-known - [L]
+RewriteRule . index.php

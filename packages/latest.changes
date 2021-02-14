@@ -1,0 +1,34 @@
+Format: 1.8
+Date: Sun, 14 Feb 2021 02:01:42 +0100
+Source: raspisms
+Binary: raspisms
+Architecture: source all
+Version: 3.0-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Changed-By: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Description:
+ raspisms   - Web application allowing to send and receive GSM messages
+Changes:
+ raspisms (3.0-1) unstable; urgency=medium
+ .
+   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+Checksums-Sha1:
+ 32a7aeb320cf710944d938cf1447b1ef775a18ff 948 raspisms_3.0-1.dsc
+ a662be9839b6d3d69c24a714a468d6895dd9cbc2 2957485 raspisms_3.0.orig.tar.gz
+ f5deefddcc2117692f9c9351a98f5c0f81469fd2 6144 raspisms_3.0-1.debian.tar.xz
+ 881f3f0adce8de76e46a145398c9395d436ace45 1607556 raspisms_3.0-1_all.deb
+ 017a26a184b14d69c47576936a3062a9ac0ee3d9 5755 raspisms_3.0-1_amd64.buildinfo
+Checksums-Sha256:
+ 3b278612a5796c3920760953f69d5b6784d64f57cb748f4b2baf5f1d6c9c3291 948 raspisms_3.0-1.dsc
+ 037b9c6f82d1e3978ecf489b32cda8a56ae649f337a46964f4275d2f3d9c924c 2957485 raspisms_3.0.orig.tar.gz
+ 0794c35afec4751d6392b6bd5f78f7f0ad510c1dda4563d25949823eca43ea85 6144 raspisms_3.0-1.debian.tar.xz
+ dd3155ac71f815591a8d3b61762e60b8273a0a119364eddf3579f9ea270e4234 1607556 raspisms_3.0-1_all.deb
+ 37db7cd1e0f31bd7e6fc63f0c8eb30954d75906e3dc7e00444b6a2d45854668b 5755 raspisms_3.0-1_amd64.buildinfo
+Files:
+ e9e821da079e5e132e46a9ea707a0a47 948 web optional raspisms_3.0-1.dsc
+ a5716002e84a2402a52afcdfd16ad556 2957485 web optional raspisms_3.0.orig.tar.gz
+ 4e4136b0b57d8839e02b5b7622bbcce4 6144 web optional raspisms_3.0-1.debian.tar.xz
+ 389e6c7f7cae097712d9c8e9b08e51a3 1607556 web optional raspisms_3.0-1_all.deb
+ 6b114b33571f2e226ac332c815849181 5755 web optional raspisms_3.0-1_amd64.buildinfo
