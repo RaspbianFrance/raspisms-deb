@@ -1,0 +1,12 @@
+raspisms (3.0.1) focal; urgency=medium
+
+  * v3.0.1          Fix : modifiying authorized_phone_country update
+    preferred_phone_country instead
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 15 Feb 2021 14:41:06 +0000
+
+raspisms (3.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 14 Feb 2021 02:01:42 +0100
