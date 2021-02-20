@@ -1,3 +1,9 @@
+raspisms (3.0.2) focal; urgency=medium
+
+  * v3.0.2          Fix empty mail transfer
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 11:59:13 +0000
+
 raspisms (3.0.1) focal; urgency=medium
 
   * v3.0.1          Fix : modifiying authorized_phone_country update
