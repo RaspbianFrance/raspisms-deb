@@ -1,3 +1,9 @@
+raspisms (3.0.6) focal; urgency=medium
+
+  * v3.0.6          Add version file
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Feb 2021 11:10:48 +0000
+
 raspisms (3.0.5) focal; urgency=medium
 
   * v3.0.5          Merge branch 'update_libephonenumber'
