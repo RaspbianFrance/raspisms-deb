@@ -1,4 +1,4 @@
-47705535bd4aa65babcde69928d327b0  usr/share/doc/raspisms/changelog.gz
+896a27fb10677a804dc25161211519fd  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 844abc4d9eb9a3cea636459827e03769  usr/share/raspisms/.htaccess
@@ -63,10 +63,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-f95c5d280d5722ff9aedc1dacb7d8454  usr/share/raspisms/assets/img/favicon.png
+e9f20b19b99feedd10d4aeb926974549  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-ec5ee9e052cba0cc4810b53c6cb77c51  usr/share/raspisms/assets/img/logo.png
+1abf02673676d80dc17b7fe1899f95e6  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -163,7 +163,7 @@ f22b56df241c942ee7a0536e8b2f755a  usr/share/raspisms/controllers/internals/Sende
 0a8a4a75f3eb128c7b031dd8a0f6dda0  usr/share/raspisms/controllers/internals/SmsStop.php
 7f34e6a756999225209adce1a6c62cf9  usr/share/raspisms/controllers/internals/StandardController.php
 a605213cd5b6f60de587e954d28bb048  usr/share/raspisms/controllers/internals/Templating.php
-8e2616e1f4f7ef78876eb1d3e0e715f6  usr/share/raspisms/controllers/internals/Tool.php
+cfccb7394f8b9c0610b24d3cbb07644e  usr/share/raspisms/controllers/internals/Tool.php
 40f055d1c9d8dbde69b2ac8b3f88ced0  usr/share/raspisms/controllers/internals/User.php
 fcbfb9e6f02298ccfaefa0c03f4261ff  usr/share/raspisms/controllers/internals/Webhook.php
 d2fa1fa033d0656fc7785a252f85de81  usr/share/raspisms/controllers/publics/Account.php
@@ -172,7 +172,7 @@ c39fccfea87995e83a827accd90ca830  usr/share/raspisms/controllers/publics/Api.php
 cd89f17c2df69611b8aecf36b8ceb67e  usr/share/raspisms/controllers/publics/Command.php
 e7b8b2c9948a332033ee6dc327756de4  usr/share/raspisms/controllers/publics/ConditionalGroup.php
 d1287ce3db80f0332db851ef33ebc7d7  usr/share/raspisms/controllers/publics/Connect.php
-ceaad7e812fc955c5df7ce63c427b077  usr/share/raspisms/controllers/publics/Contact.php
+bcd27235088a80c9fbcefb48d2267e84  usr/share/raspisms/controllers/publics/Contact.php
 0c9f10024a9c71453650c7f06a4c92c7  usr/share/raspisms/controllers/publics/Dashboard.php
 3a2fb7ffab9153f2b34a7a30ec027dde  usr/share/raspisms/controllers/publics/Discussion.php
 3503b1c9675d8db0559589264cb12ac5  usr/share/raspisms/controllers/publics/Event.php

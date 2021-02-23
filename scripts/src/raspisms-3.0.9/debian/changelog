@@ -1,3 +1,10 @@
+raspisms (3.0.9) focal; urgency=medium
+
+  * v3.0.9           Fix bad mimetype when importing csv from a windows
+    computer
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 13:34:14 +0000
+
 raspisms (3.0.8) focal; urgency=medium
 
   * v3.0.8          Fix bad type comparaison in command analysis leading
