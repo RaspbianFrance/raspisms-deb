@@ -1,10 +1,10 @@
-7d62fc93a8247a17a2a973bd9f3aa455  usr/share/doc/raspisms/changelog.gz
+d18310cc5d898eb3b5f12e5fb8a244cf  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 844abc4d9eb9a3cea636459827e03769  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-d516cecbcbf7a849b1352122bf1b7050  usr/share/raspisms/VERSION
+61359ce678a82a7760bea588cbb2a38a  usr/share/raspisms/VERSION
 898397c263412c5b0b902f5fceea8eaf  usr/share/raspisms/adapters/AdapterInterface.php
 7d67a4df50c6d8db3271e05ea8aeac9e  usr/share/raspisms/adapters/BenchmarkAdapter.php
 98ad599d14f638747e3cc644dd964be7  usr/share/raspisms/adapters/GammuAdapter.php
@@ -63,10 +63,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-f948ef662e05e8574e5bd02c2ef3cc26  usr/share/raspisms/assets/img/favicon.png
+956b43d1fa2e671e8ca83016784a4004  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-e877a8ccacf5f475a68367c19ac8fd51  usr/share/raspisms/assets/img/logo.png
+72840f435065de352d7176cc7a95a670  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -157,7 +157,7 @@ cc1e9a465579b9bf4b9886af7ecd889f  usr/share/raspisms/controllers/internals/Maile
 1b15e79d109f9c1e4da054e4e12f3284  usr/share/raspisms/controllers/internals/Phone.php
 34c40edf8606bfa8f18781e626ac7293  usr/share/raspisms/controllers/internals/Received.php
 88f561fabff8f403abcdb6f34656e7b6  usr/share/raspisms/controllers/internals/Ruler.php
-061dc48033258be0c3b7fbd5b38acd31  usr/share/raspisms/controllers/internals/Scheduled.php
+f97a53259b498ff0c8084ae15b69e696  usr/share/raspisms/controllers/internals/Scheduled.php
 f22b56df241c942ee7a0536e8b2f755a  usr/share/raspisms/controllers/internals/Sended.php
 40c192c81f4c040b574ab69094f84e23  usr/share/raspisms/controllers/internals/Setting.php
 0a8a4a75f3eb128c7b031dd8a0f6dda0  usr/share/raspisms/controllers/internals/SmsStop.php
