@@ -75,9 +75,13 @@ printf "Done.\n"
 
 
 #Remove old archive dir
-printf "Remove old archive dir"
+printf "Remove old archive dir\n"
 rm -rf "$OLD_ARCHIVE_SRC"
 printf "Done.\n"
+
+
+#Replace old archive debian files with local ones in case they have been any change
+cp -R "$SCRIPT_DIR/files/"* "./debian/"
 
 
 #Update changelog

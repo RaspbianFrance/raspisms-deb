@@ -262,10 +262,8 @@ do_app_config () {
 
             #Only if file have changed on one part, ask for update and potentially update
             if [ "$CURRENT_FILE_MD5" != "$NEW_FILE_MD5" ]; then
-                ask_for_conf_file_update $FINAL_FILE $f
-                if [ $? -eq 0 ]; then
-                    mv $f $FINAL_FILE
-                fi
+                ucf --debconf-ok $f $FINAL_FILE
+                rm $f
             fi
         else
             mv $f $FINAL_FILE
