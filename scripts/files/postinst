@@ -44,16 +44,18 @@ db_get raspisms/database_user
 APP_DATABASE_USER=$RET
 db_get raspisms/database_password
 APP_DATABASE_PASS=$RET
-db_reset raspisms/database_password
-if [ -z "$APP_DATABASE_PASS" ] ; then APP_DATABASE_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) ; fi
+if [ -z "$APP_DATABASE_PASS" ] ; then APP_DATABASE_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) ; db_set raspisms/database_password "$APP_DATABASE_PASS" ; fi
+
+#App static http url
+db_get raspisms/app_static_http_url
+APP_STATIC_HTTP_URL=$RET
 
 #App user
 db_get raspisms/app_user_email
 APP_USER_EMAIL=$RET
 db_get raspisms/app_user_password
 APP_USER_PASSWORD=$RET
-db_reset raspisms/app_user_password
-if [ -z "$APP_USER_PASSWORD" ] ; then APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1) ; fi
+if [ -z "$APP_USER_PASSWORD" ] ; then APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1) ; db_set raspisms/app_user_password "$APP_DATABASE_PASS" ; fi
 APP_USER_ADMIN=true
 
 #App Mail SMTP
@@ -87,6 +89,43 @@ Admin: $APP_USER_ADMIN\n"
 error_report () {
     printf "\n\nError on line $(caller)\n\n";
     exit 1
+}
+
+ask_for_conf_file_update () {
+    CONF_FILE=$1
+    NEW_FILE=$1
+
+    printf "The configuration file $CONF_FILE have been modified by package maintainer and conflict with your own modifications.\n"
+
+    while true; do
+        printf "Do you want to replace your file with the maintainer one? [Y/n/d (to show diff)] : "
+        read confirm
+        return 0
+        if [ -z "$confirm" ]; then
+            confirm="y"
+        fi
+
+        case $confirm in
+            Y | y)
+                printf "\nReplace configuration file $CONF_FILE.\n"
+                return 0
+                ;;
+
+            N | n) 
+                printf "\nDo not replace configuration file $CONF_FILE.\n"
+                return 1
+                ;;
+
+            D | d)
+                printf "\nDiff : \n"
+                diff $CONF_FILE $NEW_FILE
+                ;;
+
+            *) 
+                printf "\nInvalid answer, please answer with 'Y' or 'N'.\n"
+                ;;
+        esac
+    done
 }
 
 do_show_credentials () {
@@ -160,10 +199,6 @@ do_phinx () {
 
 
 do_app_config () {
-    if [ "$IS_UPDATE" = true ]; then
-        return 0
-    fi
-
     printf "\n"
     printf "Do configuration of RaspiSMS app...\n"
 
@@ -177,7 +212,10 @@ do_app_config () {
     
     printf "  Replace APP_SECRET : \n"
     find . -type f -name "*.dist.local" -exec replace '%APP_SECRET%' "$APP_SECRET" -- {} \;
-   
+
+    printf " Replace APP_STATIC_HTTP_URL : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_STATIC_HTTP_URL%' "$APP_STATIC_HTTP_URL" -- {} \;
+
     if [ "$DATABASE_AUTO_CONF" = "true" ]; then
         printf "  Replace APP_DATABASE_HOST : \n"
         find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_HOST%' "$APP_DATABASE_HOST" -- {} \;
@@ -215,7 +253,21 @@ do_app_config () {
     printf "  Remove .dist.local extensions.\n"
     for f in *.dist.local
     do
-        mv $f `basename $f ".dist.local"`
+        FINAL_FILE=$(basename $f '.dist.local')
+     
+        #If file already exists, check if we must update, else create
+        if [ -f "$FINAL_FILE" ]; then
+            CURRENT_FILE_MD5=$(md5sum "$FINAL_FILE" | cut -d' ' -f1)
+            NEW_FILE_MD5=$(md5sum "$f" | cut -d' ' -f1)
+
+            #Only if file have changed on one part, ask for update and potentially update
+            if [ "$CURRENT_FILE_MD5" != "$NEW_FILE_MD5" ]; then
+                ucf --debconf-ok $f $FINAL_FILE
+                rm $f
+            fi
+        else
+            mv $f $FINAL_FILE
+        fi
     done
 
     printf "Done.\n"

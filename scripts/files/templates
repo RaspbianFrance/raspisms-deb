@@ -3,6 +3,12 @@ Type: title
 Description: RaspiSMS Configuration
  Title of RaspiSMS configuration window.
 
+Template: raspisms/app_static_http_url
+Type: string
+Default: https://127.0.0.1/raspisms
+Description: URL to access raspisms:
+ You must provide an URL pointing to root of RaspiSMS website.
+
 Template: raspisms/app_user_email
 Type: string
 Default: admin@example.com

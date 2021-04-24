@@ -36,6 +36,13 @@ do_database_conf () {
     db_go
 }
 
+do_static_http_url () {
+    db_beginblock
+        db_input medium raspisms/app_static_http_url || true
+    db_endblock
+    db_go
+}
+
 do_app_user () {
     db_beginblock
         db_input medium raspisms/app_user_email || true
@@ -89,6 +96,7 @@ do_systemd_conf () {
 
 #Main
 do_title
+do_static_http_url
 do_database_conf
 do_app_user
 do_app_mail
