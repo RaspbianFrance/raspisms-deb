@@ -1,0 +1,462 @@
+/*
+ * Feuille de style personnalisée pour le site
+ */
+
+/** GENERAL **/
+.hidden
+{
+    display: none;
+}
+
+.no-padding
+{
+	padding: 0 !important;
+}
+
+.small-text
+{
+	font-size: 0.7em;
+}
+
+.italic
+{
+	font-style: italic;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.float-right
+{
+    float: right;
+}
+
+.inline-block
+{
+    display: inline-block;
+}
+
+.auto-width
+{
+    width: auto !important;
+}
+
+.no-wrap
+{
+    white-space: nowrap;
+}
+
+.full-width
+{
+    width: 100%;
+}
+
+/** POPUPS ALERT **/
+.popup-alerts-container
+{
+	position: fixed;
+	left: 25%;
+	top: 0;
+	z-index: 9998;
+	width: 50%;
+}
+
+.popup-alert
+{
+    margin-top: 25px;
+    margin-left: 0;
+	width: 100%;
+	position: relative;
+}
+
+/** FOOTER **/
+footer
+{
+	color: #aaaaaa;
+	font-size: 0.8em;
+	padding-top: 50px;
+	padding-bottom: 25px;
+    line-height: 2em;
+}
+
+footer img
+{
+    width: 100px;
+    display: inline-block;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+/** GROUPES **/
+.list-contacts
+{
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	padding: 0.5em;
+	margin-bottom: 1em;
+}
+
+.delete-contact
+{
+	color: #cccccc;
+}
+
+.delete-contact:hover
+{
+	cursor: pointer;
+	color: #ffffff;
+}
+
+/** FORM CONNEXION **/
+.connexion-form
+{
+	background-color: #ffffff;
+	padding: 30px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+}
+
+.connexion-form .forget-password-link
+{
+	color: #333333;
+}
+
+.forget-password-link:hover
+{
+	color: #2a6496;
+	text-decoration: none;
+}
+
+.connexion-form button
+{
+	margin-top: 0.7em;
+}
+
+/** RESET EMAIL PAGES **/
+.email-reset-container 
+{
+	background-color: #ffffff;
+	padding: 30px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+}
+
+.email-reset-container img
+{
+    margin-bottom: 50px;
+}
+
+/** MENU **/
+.logo
+{
+    height: 100%;
+}
+
+.navbar-brand
+{
+    padding: 13px 15px;
+}
+
+.navbar
+{
+	border: none;
+}
+
+.side-nav>li>ul>li.active>a {
+    color: #fff;
+	background-color: #000;
+}
+
+.goto:hover
+{
+	cursor: pointer;
+}
+
+/** DISCUSSION **/
+.table-discussions tbody tr:hover
+{
+	cursor: pointer;
+	background-color: #999;
+}
+
+.discussion-container
+{
+	overflow: auto;
+}
+
+.discussion-message
+{
+	border-radius: 5px;
+	display: inline-block;
+	max-width: 90%;
+	padding: 10px;
+	position: relative;
+}
+
+.discussion-message-text
+{
+	font-size: 1.3em;
+}
+
+.discussion-message-date
+{
+	font-size: 0.9em;
+}
+
+.discussion-message-medias img
+{
+    transition-duration: 0.1s;
+    max-width: 150px;
+    max-height: 150px;
+    line-height: 150px;
+    width: auto;
+    height: auto;
+}
+
+.discussion-message-medias img:hover
+{
+    opacity: 0.6;
+}
+
+.discussion-message-media
+{
+    display: inline-block;
+    line-height: 160px;
+    width: 160px;
+    height: 160px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    vertical-align: middle;
+    text-align: center;
+    margin: 5px;
+}
+
+.message-container
+{
+	margin-bottom: 10px;
+}
+
+.message-received
+{
+	background-color: #1abc9c;
+	float: left;
+	color: #fff;
+}
+
+.message-sended
+{
+	background-color: #ddd;
+	float: right;
+}
+
+.message-received .discussion-message-date
+{
+	color: #f0f0f0;
+}
+
+.message-sended .discussion-message-date
+{
+	text-align: right;
+	color: #888;
+}
+
+.message-input
+{
+	width: 100%;
+	max-width: 100%;
+	background-color: #ddd;
+}
+
+.message-input textarea
+{
+	width: 100%;
+	resize: none;
+	height: 6em;
+}
+
+.message-input button
+{
+	float: right;
+	margin-top: 8px;
+}
+
+.message-input input[type="file"]
+{
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.message-in-progress-hover
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 900;
+	opacity: 0.7;
+	background-color: #fff;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+/* SCHEDULEDS */
+.add-number-button
+{
+	display: inline-block;
+	color: #DADFE1;
+	font-size: 35px;
+	vertical-align: top;
+}
+
+.add-number-button:hover
+{
+	color: #3498DB;
+	cursor: pointer;
+}
+
+.scheduleds-number-group
+{
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+	margin-right: 20px;
+	margin-bottom: 0;
+}
+
+.remove-scheduleds-number
+{
+	display: inline-block;
+	color: #bbbbbb;
+	font-size: 15px;
+	z-index: 999;
+}
+
+.remove-scheduleds-number:hover
+{
+	color: #aaaaaa;
+	cursor: pointer;
+}
+
+.scheduled-preview-container
+{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.scheduled-preview-container label,
+.scheduled-preview-container select
+{
+    display: inline-block;
+    width: auto;
+}
+
+.scheduled-preview-text-modal .modal-title
+{
+    font-weight: bold;
+}
+
+/* AUDIO RECEPTION MESSAGE */
+#reception-sound
+{
+	display: none;
+}
+
+/* Forms */
+.checkbox label,
+.radio label
+{
+    line-height: 24px;
+}
+
+
+/* CONTACT */
+#import-modal input:valid + label .valid-icon
+{
+    color: #4cae4c;
+    display: inline-block !important;
+}
+
+#import-modal input:invalid + label .invalid-icon
+{
+    display: inline-block !important;
+}
+
+.contact-data-container input
+{
+    display: inline-block;
+}
+
+.contact-data-container .contact-data-name
+{
+    width: 25%;
+}
+
+.contact-data-container .contact-data-value
+{
+    width: 50%;
+}
+
+.contact-data-container .contact-data-remove
+{
+    color: #c9302c;
+}
+
+
+/* PHONE */
+#adapter-data-container
+{
+    margin-top: 35px;
+}
+
+#adapter-data-fields-container
+{
+    margin-top: 20px;
+}
+
+#adapter-data-fields
+{
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+/* DATATABLES */
+.dataTables_paginate
+{
+    margin-bottom: 20px !important;
+}
+
+.checkcolumn
+{
+    width: 20px;
+}
+
+/*
+ * FORMS 
+ */
+.form-group
+{
+    margin-bottom: 30px;
+}
+
+
+/**
+ * Contacts conditional deletion
+ */
+.conditional-deletion-preview-container
+{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.conditional-deletion-preview-container label,
+.conditional-deletion-preview-container select
+{
+    display: inline-block;
+    width: auto;
+}
