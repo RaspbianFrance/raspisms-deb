@@ -1,3 +1,10 @@
+raspisms (3.1.2) focal; urgency=medium
+
+  * v3.1.2          Add support for reception of sms where text is
+    longer than 1000 chars
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 26 Apr 2021 22:26:23 +0000
+
 raspisms (3.1.0) focal; urgency=medium
 
   * v3.1.0          Add support for call notification and for MMS, add
