@@ -1,0 +1,129 @@
+raspisms (3.1.6) focal; urgency=medium
+
+  * v3.1.6          Add function to impersonate a user when admin
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 12 Jul 2021 23:23:27 +0000
+
+raspisms (3.1.5) focal; urgency=medium
+
+  * v3.1.5          Update octopush adapter for new API and callbacks,
+    add global select, fix bug in nav when hidding logs
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 11 Jul 2021 19:45:43 +0000
+
+raspisms (3.1.4) focal; urgency=medium
+
+  * v3.1.4          Implement a quota mechanism, make users editable by
+    admin, add settings for quota and hidding menus
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 16 Jun 2021 22:56:33 +0000
+
+raspisms (3.1.3) focal; urgency=medium
+
+  * v3.1.3          Improve callback status update
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 26 May 2021 13:49:12 +0000
+
+raspisms (3.1.2) focal; urgency=medium
+
+  * v3.1.2          Add support for reception of sms where text is
+    longer than 1000 chars
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 26 Apr 2021 22:26:23 +0000
+
+raspisms (3.1.0) focal; urgency=medium
+
+  * v3.1.0          Add support for call notification and for MMS, add
+    webhook on call, improve webhook content to make it more flexible,
+    add length selection on entries list, add timestamps to all entries
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 25 Apr 2021 01:09:24 +0000
+
+raspisms (3.0.13) focal; urgency=medium
+
+  * v3.0.13         Fix cannot find sms uid from gammu phone where gammu
+    locale is not in english
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 07 Mar 2021 11:27:36 +0000
+
+raspisms (3.0.12) focal; urgency=medium
+
+  * v3.0.12         Fix reset password
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 24 Feb 2021 15:02:41 +0000
+
+raspisms (3.0.11) focal; urgency=medium
+
+  * v3.0.11         Improve randomize on phone used to send message
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 18:00:09 +0000
+
+raspisms (3.0.10) focal; urgency=medium
+
+  * v3.0.10         fix version
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 13:42:25 +0000
+
+raspisms (3.0.9) focal; urgency=medium
+
+  * v3.0.9           Fix bad mimetype when importing csv from a windows
+    computer
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 13:34:14 +0000
+
+raspisms (3.0.8) focal; urgency=medium
+
+  * v3.0.8          Fix bad type comparaison in command analysis leading
+    to command never been executed
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 22 Feb 2021 23:47:42 +0000
+
+raspisms (3.0.7) focal; urgency=medium
+
+  * v3.0.7          trigger release
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Feb 2021 11:23:37 +0000
+
+raspisms (3.0.6) focal; urgency=medium
+
+  * v3.0.6          Add version file
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Feb 2021 11:10:48 +0000
+
+raspisms (3.0.5) focal; urgency=medium
+
+  * v3.0.5          Merge branch 'update_libephonenumber'
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 21:05:41 +0000
+
+raspisms (3.0.4) focal; urgency=medium
+
+  * v3.0.4          Fix bug on contact export and import with CSV format
+    when no contact datas or mixed contact datas
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 17:02:00 +0000
+
+raspisms (3.0.3) focal; urgency=medium
+
+  * v3.0.3          Fix line break in email
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 12:07:00 +0000
+
+raspisms (3.0.2) focal; urgency=medium
+
+  * v3.0.2          Fix empty mail transfer
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 11:59:13 +0000
+
+raspisms (3.0.1) focal; urgency=medium
+
+  * v3.0.1          Fix : modifiying authorized_phone_country update
+    preferred_phone_country instead
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 15 Feb 2021 14:41:06 +0000
+
+raspisms (3.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 14 Feb 2021 02:01:42 +0100
