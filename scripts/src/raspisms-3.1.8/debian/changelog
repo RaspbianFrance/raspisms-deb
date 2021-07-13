@@ -1,3 +1,9 @@
+raspisms (3.1.8) focal; urgency=medium
+
+  * v3.1.8          revert limit on sended list
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 13 Jul 2021 15:18:30 +0000
+
 raspisms (3.1.6) focal; urgency=medium
 
   * v3.1.6          Add function to impersonate a user when admin
