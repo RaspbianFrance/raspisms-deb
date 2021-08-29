@@ -1,10 +1,10 @@
-ee1c2e62e0b5dbd2a0ed863434c493ef  usr/share/doc/raspisms/changelog.gz
+f838520da96e79957e6d39a5038cf12c  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 f28dd7a8c0be2b2dcffd49821812a9f5  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-8628e107e6f95d2765f4b999912a54d3  usr/share/raspisms/VERSION
+d3a0fdf2a4392847d47817618ee0166f  usr/share/raspisms/VERSION
 e834d5b4993c93c5854429487c9a9493  usr/share/raspisms/adapters/AdapterInterface.php
 20c67a70822185d6a9c4baf5ccbe73e8  usr/share/raspisms/adapters/BenchmarkAdapter.php
 a53da8a3974a0e1db5ca6ad65dd068a3  usr/share/raspisms/adapters/GammuAdapter.php
@@ -63,10 +63,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-0cfa9708f0989e4f62f6127de5b8a20e  usr/share/raspisms/assets/img/favicon.png
+36129be35dd70ab62ecceeb126a2ab20  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-0493ae2416e79591684d1b073737f32b  usr/share/raspisms/assets/img/logo.png
+e928113f8b0400fe631ec8c62cf046dc  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -181,7 +181,7 @@ d1287ce3db80f0332db851ef33ebc7d7  usr/share/raspisms/controllers/publics/Connect
 770af14b953035058d9f49071bd2dae6  usr/share/raspisms/controllers/publics/Event.php
 053454902eef82502d5f97a87a1a5f50  usr/share/raspisms/controllers/publics/Group.php
 35810a4ca9929d7cbf68b44b20af86e2  usr/share/raspisms/controllers/publics/Phone.php
-6a70c07f6ca6ad7aa6e097b672b28344  usr/share/raspisms/controllers/publics/Received.php
+72c6154e5f1cf72f7fab9078db8d4c20  usr/share/raspisms/controllers/publics/Received.php
 c239e203d84947d3b5a7dc5260ffa132  usr/share/raspisms/controllers/publics/Scheduled.php
 dbc6422afecc903f2ea7768022045068  usr/share/raspisms/controllers/publics/Sended.php
 86c00d26f5f03c748e31119f4d04de49  usr/share/raspisms/controllers/publics/Setting.php
