@@ -1,3 +1,9 @@
+raspisms (3.1.12) focal; urgency=medium
+
+  * v3.1.12         Fix few missing indexes
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 17 Sep 2021 20:04:43 +0000
+
 raspisms (3.1.11) focal; urgency=medium
 
   * v3.1.11         fix js
