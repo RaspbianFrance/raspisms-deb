@@ -1,3 +1,10 @@
+raspisms (3.1.13) focal; urgency=medium
+
+  * v3.1.13         Fix bug where scheduled message was not removed when
+    only target number has a stop sms or message is empty.
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 17 Sep 2021 20:33:38 +0000
+
 raspisms (3.1.12) focal; urgency=medium
 
   * v3.1.12         Fix few missing indexes
