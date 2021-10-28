@@ -1,3 +1,10 @@
+raspisms (3.2.1) focal; urgency=medium
+
+  * v3.2.1          ensure text and at are string in api to create
+    scheduled
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Thu, 28 Oct 2021 15:40:45 +0000
+
 raspisms (3.2.0) focal; urgency=medium
 
   * v3.2.0          Add a new webhook for sended sms status change. Add
