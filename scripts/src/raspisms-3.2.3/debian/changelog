@@ -1,3 +1,11 @@
+raspisms (3.2.3) focal; urgency=medium
+
+  * v3.2.3          Silence notice on expression evaluation and fix
+    unexpcted behavior on api scheduled call when numbers is an array of
+    array
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 26 Nov 2021 18:44:31 +0000
+
 raspisms (3.2.2) focal; urgency=medium
 
   * v3.2.2          Add adapter for kannel phones
