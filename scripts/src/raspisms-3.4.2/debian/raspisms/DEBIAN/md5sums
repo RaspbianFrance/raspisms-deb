@@ -1,10 +1,10 @@
-89dd4b079b8c0b72df666ed70025d09f  usr/share/doc/raspisms/changelog.gz
+2ca81b5b0d62da7174b18fcc60e88a6f  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 f28dd7a8c0be2b2dcffd49821812a9f5  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-8bca11cabd9b3aef499c0b74ae17786e  usr/share/raspisms/VERSION
+d47076d797fd28472dc3a0fd89942a5c  usr/share/raspisms/VERSION
 0323ca9a738e3a6122e55e3e7ae3fe1b  usr/share/raspisms/adapters/AdapterInterface.php
 f98dc6b60233787ed3911d53009ce7d9  usr/share/raspisms/adapters/BenchmarkAdapter.php
 d20767b1eadc2294eb0773a9f33293c1  usr/share/raspisms/adapters/GammuAdapter.php
@@ -64,10 +64,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-e4980912eef3aef00981741592d26cf3  usr/share/raspisms/assets/img/favicon.png
+3c85a38dd674e76dea346763690223db  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-34ed639f8eb8dc494b974096789afb6e  usr/share/raspisms/assets/img/logo.png
+537d82b639f5ece038c04a8798c204b7  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -171,7 +171,7 @@ a605213cd5b6f60de587e954d28bb048  usr/share/raspisms/controllers/internals/Templ
 201d98c54453ff060a820523b96859d5  usr/share/raspisms/controllers/internals/User.php
 a5a4d59a896364edfd9cadb57766ea04  usr/share/raspisms/controllers/internals/Webhook.php
 9ac0e1e5089c37ea15bbe0e5680acc57  usr/share/raspisms/controllers/publics/Account.php
-17ad7cecb378ad8115377598a16861ea  usr/share/raspisms/controllers/publics/Api.php
+1f27f37033c24b6ca4b501c3abf2c077  usr/share/raspisms/controllers/publics/Api.php
 3b39341f7ef0782d10bc9a54b154c04b  usr/share/raspisms/controllers/publics/Call.php
 93c5c4b63be1f06df3432a3a5099d890  usr/share/raspisms/controllers/publics/Callback.php
 cd89f17c2df69611b8aecf36b8ceb67e  usr/share/raspisms/controllers/publics/Command.php
@@ -259,7 +259,7 @@ f382254d65dd7cde13683843f88f51c9  usr/share/raspisms/models/StandardModel.php
 375e4bb2630994b295ebc3d6edeef8a3  usr/share/raspisms/models/User.php
 87d487b8f0a3e82a21794701a774db37  usr/share/raspisms/models/Webhook.php
 8ad05b91e16a1681d9c085cf4b54b17b  usr/share/raspisms/phinx.yml.dist
-cdfd8bb0f5e28f10cae02be1f4a8b725  usr/share/raspisms/routes.php
+73171ba1f19a2d41c7188978f94c8c57  usr/share/raspisms/routes.php
 d41d8cd98f00b204e9800998ecf8427e  usr/share/raspisms/scripts/.tokeep
 3a82e3a9ef5ed57d5a52f9d56eb90c24  usr/share/raspisms/templates/account/show.php
 1fb4afa6b7c97b337daa4ed311d1334f  usr/share/raspisms/templates/call/list.php
