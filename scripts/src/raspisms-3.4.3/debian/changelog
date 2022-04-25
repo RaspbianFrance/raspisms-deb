@@ -1,3 +1,10 @@
+raspisms (3.4.3) focal; urgency=medium
+
+  * v3.4.3          fix discussion send message not working after
+    introduction of data in numbers
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 25 Apr 2022 16:50:46 +0000
+
 raspisms (3.4.2) focal; urgency=medium
 
   * v3.4.2          Add support for updating phone through API
