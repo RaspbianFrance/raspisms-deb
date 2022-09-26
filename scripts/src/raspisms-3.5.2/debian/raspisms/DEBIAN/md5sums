@@ -1,10 +1,10 @@
-e88b7a8f96cf7ed3f6b9a31c5969d412  usr/share/doc/raspisms/changelog.gz
+b3625fb2c67ce7516babd27b70e392f6  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 f28dd7a8c0be2b2dcffd49821812a9f5  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-9b179c35fcbe8cb8882b461351af5b3b  usr/share/raspisms/VERSION
+7277a8406860f92792420eb3d260ebc8  usr/share/raspisms/VERSION
 0323ca9a738e3a6122e55e3e7ae3fe1b  usr/share/raspisms/adapters/AdapterInterface.php
 f98dc6b60233787ed3911d53009ce7d9  usr/share/raspisms/adapters/BenchmarkAdapter.php
 d20767b1eadc2294eb0773a9f33293c1  usr/share/raspisms/adapters/GammuAdapter.php
@@ -64,10 +64,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-b71e2746a860694819750a28860fb2d9  usr/share/raspisms/assets/img/favicon.png
+6674137b3e9054cd1e74f2acf71db303  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-5d7acf62e90a9dfd749974767a151862  usr/share/raspisms/assets/img/logo.png
+e2962d3a8607351d39fdb56b2fc47ad8  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -173,7 +173,7 @@ a5a4d59a896364edfd9cadb57766ea04  usr/share/raspisms/controllers/internals/Webho
 9ac0e1e5089c37ea15bbe0e5680acc57  usr/share/raspisms/controllers/publics/Account.php
 82fbc36ead99fb5f3a24d9907b0f9035  usr/share/raspisms/controllers/publics/Api.php
 3b39341f7ef0782d10bc9a54b154c04b  usr/share/raspisms/controllers/publics/Call.php
-93c5c4b63be1f06df3432a3a5099d890  usr/share/raspisms/controllers/publics/Callback.php
+92494cd458af64cc50e35a4163c98b8e  usr/share/raspisms/controllers/publics/Callback.php
 cd89f17c2df69611b8aecf36b8ceb67e  usr/share/raspisms/controllers/publics/Command.php
 474a8c50ce4ce7f3d2c59012826a0d02  usr/share/raspisms/controllers/publics/ConditionalGroup.php
 d1287ce3db80f0332db851ef33ebc7d7  usr/share/raspisms/controllers/publics/Connect.php
