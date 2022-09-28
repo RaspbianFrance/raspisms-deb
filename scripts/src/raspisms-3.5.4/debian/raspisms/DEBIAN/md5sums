@@ -1,10 +1,10 @@
-d86542bea1c58739bc5b0eb0fd6e7d5e  usr/share/doc/raspisms/changelog.gz
+6e47175dc1c005d35e2d719e6b9b4976  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 f28dd7a8c0be2b2dcffd49821812a9f5  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-20fca1015911f96a4d2dc24018b96ba3  usr/share/raspisms/VERSION
+3b8415a8bde1d325b3ad727a4762d835  usr/share/raspisms/VERSION
 0323ca9a738e3a6122e55e3e7ae3fe1b  usr/share/raspisms/adapters/AdapterInterface.php
 f98dc6b60233787ed3911d53009ce7d9  usr/share/raspisms/adapters/BenchmarkAdapter.php
 d20767b1eadc2294eb0773a9f33293c1  usr/share/raspisms/adapters/GammuAdapter.php
@@ -64,10 +64,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-c7b87c33ba3055c958cc458d91b04f68  usr/share/raspisms/assets/img/favicon.png
+81a56a27fd53edc7513caa90ea9a4519  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-dfd0ca8e66ce966efa5d4f9acb30f2f6  usr/share/raspisms/assets/img/logo.png
+efd6a3d7f4925665eacbd5dcb66aa4fc  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -195,7 +195,7 @@ dbc6422afecc903f2ea7768022045068  usr/share/raspisms/controllers/publics/Sended.
 bdb6b3110f7dc758413e4376239ee900  usr/share/raspisms/daemons/Launcher.php
 07d407557c074125e478b187de52754c  usr/share/raspisms/daemons/Mailer.php
 c4fe0f895e64ae2416711e13a133d71f  usr/share/raspisms/daemons/Phone.php
-49617140b11d866bb085978691a7fbb7  usr/share/raspisms/daemons/Sender.php
+757f1a0a458ca0d6430caee628bf2160  usr/share/raspisms/daemons/Sender.php
 0c8a2ce5133691b620dd8a729df02104  usr/share/raspisms/daemons/Webhook.php
 d41d8cd98f00b204e9800998ecf8427e  usr/share/raspisms/data/.tokeep
 d41d8cd98f00b204e9800998ecf8427e  usr/share/raspisms/data/public/.tokeep

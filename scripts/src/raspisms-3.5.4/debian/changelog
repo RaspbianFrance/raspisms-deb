@@ -1,3 +1,9 @@
+raspisms (3.5.4) focal; urgency=medium
+
+  * v3.5.4          fix trailing $
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 28 Sep 2022 18:12:51 +0000
+
 raspisms (3.5.3) focal; urgency=medium
 
   * v3.5.3          Change addressing system for message queue of phones
