@@ -1,10 +1,10 @@
-b3625fb2c67ce7516babd27b70e392f6  usr/share/doc/raspisms/changelog.gz
+d86542bea1c58739bc5b0eb0fd6e7d5e  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 f28dd7a8c0be2b2dcffd49821812a9f5  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-7277a8406860f92792420eb3d260ebc8  usr/share/raspisms/VERSION
+20fca1015911f96a4d2dc24018b96ba3  usr/share/raspisms/VERSION
 0323ca9a738e3a6122e55e3e7ae3fe1b  usr/share/raspisms/adapters/AdapterInterface.php
 f98dc6b60233787ed3911d53009ce7d9  usr/share/raspisms/adapters/BenchmarkAdapter.php
 d20767b1eadc2294eb0773a9f33293c1  usr/share/raspisms/adapters/GammuAdapter.php
@@ -64,10 +64,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-6674137b3e9054cd1e74f2acf71db303  usr/share/raspisms/assets/img/favicon.png
+c7b87c33ba3055c958cc458d91b04f68  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-e2962d3a8607351d39fdb56b2fc47ad8  usr/share/raspisms/assets/img/logo.png
+dfd0ca8e66ce966efa5d4f9acb30f2f6  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -194,8 +194,8 @@ dbc6422afecc903f2ea7768022045068  usr/share/raspisms/controllers/publics/Sended.
 33fddc365dc90370642a053c108f7efc  usr/share/raspisms/daemons/AbstractDaemon.php
 bdb6b3110f7dc758413e4376239ee900  usr/share/raspisms/daemons/Launcher.php
 07d407557c074125e478b187de52754c  usr/share/raspisms/daemons/Mailer.php
-5fa2ae6d795dd84d0ae60a96a1d8579a  usr/share/raspisms/daemons/Phone.php
-2324b26170020ddf29f78b2a64c6ee6b  usr/share/raspisms/daemons/Sender.php
+c4fe0f895e64ae2416711e13a133d71f  usr/share/raspisms/daemons/Phone.php
+49617140b11d866bb085978691a7fbb7  usr/share/raspisms/daemons/Sender.php
 0c8a2ce5133691b620dd8a729df02104  usr/share/raspisms/daemons/Webhook.php
 d41d8cd98f00b204e9800998ecf8427e  usr/share/raspisms/data/.tokeep
 d41d8cd98f00b204e9800998ecf8427e  usr/share/raspisms/data/public/.tokeep
@@ -238,7 +238,7 @@ c9189932fdcaa38d83b9a2095881b0c6  usr/share/raspisms/descartes/exceptions/Descar
 9c5bca3e60ef2e88ef58b2cb50893b4a  usr/share/raspisms/descartes/exceptions/DescartesExceptionTemplateNotReadable.php
 b9ff25cc7ef5efbc76ba3b6cd5f35bc1  usr/share/raspisms/descartes/load-environment.php
 0a1cc9b63ddaa17a6c16a80f3cd92dd4  usr/share/raspisms/descartes/load.php
-155d092d239ef3a6ac5c6dc24e7e2be9  usr/share/raspisms/env.php.dist
+6ee6ece3b9bbd414a7a5dcb462614020  usr/share/raspisms/env.php.dist
 10ae9f69810184e6d410b912aff82a3a  usr/share/raspisms/env.prod.php.dist
 944b0909ff2e48c441ab8e9f0864642c  usr/share/raspisms/index.php
 4c64f379d1a288261805976275e370e0  usr/share/raspisms/models/Call.php

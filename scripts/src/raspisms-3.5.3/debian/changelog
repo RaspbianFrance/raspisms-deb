@@ -1,3 +1,10 @@
+raspisms (3.5.3) focal; urgency=medium
+
+  * v3.5.3          Change addressing system for message queue of phones
+    to fix issue #189 on 32 bits systems
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 28 Sep 2022 18:05:48 +0000
+
 raspisms (3.5.2) focal; urgency=medium
 
   * v3.5.2          Check phone exists on callback reception
