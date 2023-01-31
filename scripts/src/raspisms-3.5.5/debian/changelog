@@ -1,0 +1,285 @@
+raspisms (3.5.5) jammy; urgency=medium
+
+  * v3.5.5          Only start daemons for phones of active users
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 31 Jan 2023 22:15:42 +0000
+
+raspisms (3.5.4) focal; urgency=medium
+
+  * v3.5.4          fix trailing $
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 28 Sep 2022 18:12:51 +0000
+
+raspisms (3.5.3) focal; urgency=medium
+
+  * v3.5.3          Change addressing system for message queue of phones
+    to fix issue #189 on 32 bits systems
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 28 Sep 2022 18:05:48 +0000
+
+raspisms (3.5.2) focal; urgency=medium
+
+  * v3.5.2          Check phone exists on callback reception
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 26 Sep 2022 15:34:34 +0000
+
+raspisms (3.5.1) focal; urgency=medium
+
+  * v3.5.1          Add size check on sms scheduling
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 26 Sep 2022 15:20:45 +0000
+
+raspisms (3.5.0) focal; urgency=medium
+
+  * v3.5.0          Add a No Stop Clause option to OVH shortcode
+    adapter. Change adapters meta 'number' to 'type' and add boolean
+    type
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 12 Jul 2022 11:19:37 +0000
+
+raspisms (3.4.3) focal; urgency=medium
+
+  * v3.4.3          fix discussion send message not working after
+    introduction of data in numbers
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 25 Apr 2022 16:50:46 +0000
+
+raspisms (3.4.2) focal; urgency=medium
+
+  * v3.4.2          Add support for updating phone through API
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 30 Mar 2022 00:18:16 +0000
+
+raspisms (3.3.2) focal; urgency=medium
+
+  * v3.3.2          Add support for hidding data of phones
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 27 Mar 2022 23:57:07 +0000
+
+raspisms (3.3.1) focal; urgency=medium
+
+  * v3.3.1          Actually use data associated with numbers in sms
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 19 Mar 2022 21:59:31 +0000
+
+raspisms (3.3.0) focal; urgency=medium
+
+  * v3.3.0          Add support for SMS to rich number + add support for
+    SMS to CSV
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 19 Mar 2022 19:10:03 +0000
+
+raspisms (3.2.7) focal; urgency=medium
+
+  * v3.2.7          Add button to show api key and add qrcode
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Thu, 20 Jan 2022 01:55:32 +0000
+
+raspisms (3.2.6) focal; urgency=medium
+
+  * v3.2.6          Change UTF8 to utf8mb4 to properly support utf8 in
+    mysql
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 29 Dec 2021 02:25:11 +0000
+
+raspisms (3.2.4) focal; urgency=medium
+
+  * v3.2.4          Add delay between SMS reading to prevent API rate
+    limit exceed
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 21 Dec 2021 14:05:56 +0000
+
+raspisms (3.2.3) focal; urgency=medium
+
+  * v3.2.3          Silence notice on expression evaluation and fix
+    unexpcted behavior on api scheduled call when numbers is an array of
+    array
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 26 Nov 2021 18:44:31 +0000
+
+raspisms (3.2.2) focal; urgency=medium
+
+  * v3.2.2          Add adapter for kannel phones
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 05 Nov 2021 23:02:18 +0000
+
+raspisms (3.2.1) focal; urgency=medium
+
+  * v3.2.1          ensure text and at are string in api to create
+    scheduled
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Thu, 28 Oct 2021 15:40:45 +0000
+
+raspisms (3.2.0) focal; urgency=medium
+
+  * v3.2.0          Add a new webhook for sended sms status change. Add
+    status and originating scheduled's id to webhook send_sms.
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 18 Oct 2021 01:45:26 +0000
+
+raspisms (3.1.13) focal; urgency=medium
+
+  * v3.1.13         Fix bug where scheduled message was not removed when
+    only target number has a stop sms or message is empty.
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 17 Sep 2021 20:33:38 +0000
+
+raspisms (3.1.12) focal; urgency=medium
+
+  * v3.1.12         Fix few missing indexes
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Fri, 17 Sep 2021 20:04:43 +0000
+
+raspisms (3.1.11) focal; urgency=medium
+
+  * v3.1.11         fix js
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 29 Aug 2021 03:44:59 +0000
+
+raspisms (3.1.10) focal; urgency=medium
+
+  * v3.1.10         Fix few js
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 28 Aug 2021 00:16:59 +0000
+
+raspisms (3.1.9) focal; urgency=medium
+
+  * v3.1.9          Fix console command to update/create a user.
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Thu, 05 Aug 2021 15:19:23 +0000
+
+raspisms (3.1.8) focal; urgency=medium
+
+  * v3.1.8          revert limit on sended list
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 13 Jul 2021 15:18:30 +0000
+
+raspisms (3.1.6) focal; urgency=medium
+
+  * v3.1.6          Add function to impersonate a user when admin
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 12 Jul 2021 23:23:27 +0000
+
+raspisms (3.1.5) focal; urgency=medium
+
+  * v3.1.5          Update octopush adapter for new API and callbacks,
+    add global select, fix bug in nav when hidding logs
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 11 Jul 2021 19:45:43 +0000
+
+raspisms (3.1.4) focal; urgency=medium
+
+  * v3.1.4          Implement a quota mechanism, make users editable by
+    admin, add settings for quota and hidding menus
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 16 Jun 2021 22:56:33 +0000
+
+raspisms (3.1.3) focal; urgency=medium
+
+  * v3.1.3          Improve callback status update
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 26 May 2021 13:49:12 +0000
+
+raspisms (3.1.2) focal; urgency=medium
+
+  * v3.1.2          Add support for reception of sms where text is
+    longer than 1000 chars
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 26 Apr 2021 22:26:23 +0000
+
+raspisms (3.1.0) focal; urgency=medium
+
+  * v3.1.0          Add support for call notification and for MMS, add
+    webhook on call, improve webhook content to make it more flexible,
+    add length selection on entries list, add timestamps to all entries
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 25 Apr 2021 01:09:24 +0000
+
+raspisms (3.0.13) focal; urgency=medium
+
+  * v3.0.13         Fix cannot find sms uid from gammu phone where gammu
+    locale is not in english
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 07 Mar 2021 11:27:36 +0000
+
+raspisms (3.0.12) focal; urgency=medium
+
+  * v3.0.12         Fix reset password
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 24 Feb 2021 15:02:41 +0000
+
+raspisms (3.0.11) focal; urgency=medium
+
+  * v3.0.11         Improve randomize on phone used to send message
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 18:00:09 +0000
+
+raspisms (3.0.10) focal; urgency=medium
+
+  * v3.0.10         fix version
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 13:42:25 +0000
+
+raspisms (3.0.9) focal; urgency=medium
+
+  * v3.0.9           Fix bad mimetype when importing csv from a windows
+    computer
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 23 Feb 2021 13:34:14 +0000
+
+raspisms (3.0.8) focal; urgency=medium
+
+  * v3.0.8          Fix bad type comparaison in command analysis leading
+    to command never been executed
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 22 Feb 2021 23:47:42 +0000
+
+raspisms (3.0.7) focal; urgency=medium
+
+  * v3.0.7          trigger release
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Feb 2021 11:23:37 +0000
+
+raspisms (3.0.6) focal; urgency=medium
+
+  * v3.0.6          Add version file
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 21 Feb 2021 11:10:48 +0000
+
+raspisms (3.0.5) focal; urgency=medium
+
+  * v3.0.5          Merge branch 'update_libephonenumber'
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 21:05:41 +0000
+
+raspisms (3.0.4) focal; urgency=medium
+
+  * v3.0.4          Fix bug on contact export and import with CSV format
+    when no contact datas or mixed contact datas
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 17:02:00 +0000
+
+raspisms (3.0.3) focal; urgency=medium
+
+  * v3.0.3          Fix line break in email
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 12:07:00 +0000
+
+raspisms (3.0.2) focal; urgency=medium
+
+  * v3.0.2          Fix empty mail transfer
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sat, 20 Feb 2021 11:59:13 +0000
+
+raspisms (3.0.1) focal; urgency=medium
+
+  * v3.0.1          Fix : modifiying authorized_phone_country update
+    preferred_phone_country instead
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 15 Feb 2021 14:41:06 +0000
+
+raspisms (3.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Sun, 14 Feb 2021 02:01:42 +0100
