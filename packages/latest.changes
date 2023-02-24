@@ -1,10 +1,10 @@
 Format: 1.8
-Date: Tue, 31 Jan 2023 22:15:42 +0000
+Date: Fri, 24 Feb 2023 23:51:22 +0000
 Source: raspisms
 Binary: raspisms
 Built-For-Profiles: noudeb
 Architecture: source all
-Version: 3.5.5
+Version: 3.6.0
 Distribution: jammy
 Urgency: medium
 Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
@@ -12,24 +12,28 @@ Changed-By: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
 Description:
  raspisms   - Web application allowing to send and receive GSM messages
 Changes:
- raspisms (3.5.5) jammy; urgency=medium
+ raspisms (3.6.0) jammy; urgency=medium
  .
-   * v3.5.5          Only start daemons for phones of active users
+   * v3.6.0          Add multiple new functions : - A new adapter for
+     Odyssey Messaging - Feature to associate a tag to sms campaign -
+     Support for phone groups - Support of phone status - Support for
+     phone priority - Support for phone limits - Settings to enable phone
+     priority and phone limits - Group contact preview
 Checksums-Sha1:
- 76312daf4ba59b366a07cd276d482e6c86d431e0 954 raspisms_3.5.5.dsc
- f0dfc6750287446421cf4de5a836c0b9ecfa90f8 4931365 raspisms_3.5.5.orig.tar.gz
- 7a04c0c6fea98b4c00927932030e9cc5ebc233c4 8596 raspisms_3.5.5.debian.tar.xz
- ae0a3cfbe48c9a66edb2179d62d8b789f3377a9d 1710774 raspisms_3.5.5_all.deb
- b4915d4d08825dbe8a52c062de759054ca157fc7 7513 raspisms_3.5.5_amd64.buildinfo
+ 190dee37df49b11e3c0a69aac1916f31b3aa2761 954 raspisms_3.6.0.dsc
+ 83a990b51caf65397ae958ce2816615828664b29 7887193 raspisms_3.6.0.orig.tar.gz
+ 979b8447d50fa0333bcf607fe258df3b17de2785 8728 raspisms_3.6.0.debian.tar.xz
+ dd1b1b7a681186c9adb2d3314d1e13fc8c947696 1887852 raspisms_3.6.0_all.deb
+ 153472c8598641a1cff360bae1a73d46ffd9d730 7557 raspisms_3.6.0_amd64.buildinfo
 Checksums-Sha256:
- 21858fd1f7800a063f2d847711cccd67a4e1112e060b18b540bdebb1c7972dcf 954 raspisms_3.5.5.dsc
- aec2f5c12aa11ae937c51ab536de73eb56bb4e730f296b832c344d6311e48322 4931365 raspisms_3.5.5.orig.tar.gz
- fb8e607515087ffa503cebc38534efd9066e8330880700a013e6bf326a8e19ea 8596 raspisms_3.5.5.debian.tar.xz
- 149cbb54edfa07d7b8c6e1dd844ed89df7f0a3365901cd0d49333ef798bf7d50 1710774 raspisms_3.5.5_all.deb
- bf412e6195d6599898f70ecdd93d6e00301d6c4d017dab1bb703f89ed0db30c9 7513 raspisms_3.5.5_amd64.buildinfo
+ cad1a49d18d7bfb4a0d4f91df318cbca9b928d94328f9d1d4f5cc2a626b68bdd 954 raspisms_3.6.0.dsc
+ 06bb087c2ef71805167d749046c0d00dcf3175b942cab3f8d553c6b762d1d922 7887193 raspisms_3.6.0.orig.tar.gz
+ 4b447810ba9bc55ca15634cc2bbe8ce282cd95ddd15e68fd0dfa2417e6da4467 8728 raspisms_3.6.0.debian.tar.xz
+ 36dd9b0df164cff6a99c163de944433b7cdf0600b73d73e7ebb48aef4615131b 1887852 raspisms_3.6.0_all.deb
+ 421410c3c358a9bb4dc7b818f62a5283e930b7933cbbef4b78708f291928bdbc 7557 raspisms_3.6.0_amd64.buildinfo
 Files:
- e9d86a0f66d69353662066bb7eed7aed 954 web optional raspisms_3.5.5.dsc
- ed89d5504136a2e40077820b896eccc4 4931365 web optional raspisms_3.5.5.orig.tar.gz
- 1c7b5ebac814e88defa4584b2c44958b 8596 web optional raspisms_3.5.5.debian.tar.xz
- a391dc1b55985852ef1b6cf7be9ff330 1710774 web optional raspisms_3.5.5_all.deb
- 15a12817f37eff0907054456724b6abc 7513 web optional raspisms_3.5.5_amd64.buildinfo
+ 80f3dd4a166ec799e34b55d3d4df7006 954 web optional raspisms_3.6.0.dsc
+ 282b349c92bdd2510c8aa29a9e0f06f0 7887193 web optional raspisms_3.6.0.orig.tar.gz
+ 6ded47e601ba89bc30419450d7d4e8d0 8728 web optional raspisms_3.6.0.debian.tar.xz
+ a08e646fc8336b4c36040c0346278ee5 1887852 web optional raspisms_3.6.0_all.deb
+ 6359807b02a6b47788e6e73c47ee760e 7557 web optional raspisms_3.6.0_amd64.buildinfo

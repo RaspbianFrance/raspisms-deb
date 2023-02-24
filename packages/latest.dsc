@@ -2,7 +2,7 @@ Format: 3.0 (quilt)
 Source: raspisms
 Binary: raspisms
 Architecture: all
-Version: 3.5.5
+Version: 3.6.0
 Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
 Homepage: https://raspisms.raspberry-pi.fr
 Standards-Version: 4.4.1
@@ -12,11 +12,11 @@ Build-Depends: debhelper-compat (= 12)
 Package-List:
  raspisms deb web optional arch=all
 Checksums-Sha1:
- f0dfc6750287446421cf4de5a836c0b9ecfa90f8 4931365 raspisms_3.5.5.orig.tar.gz
- 7a04c0c6fea98b4c00927932030e9cc5ebc233c4 8596 raspisms_3.5.5.debian.tar.xz
+ 83a990b51caf65397ae958ce2816615828664b29 7887193 raspisms_3.6.0.orig.tar.gz
+ 979b8447d50fa0333bcf607fe258df3b17de2785 8728 raspisms_3.6.0.debian.tar.xz
 Checksums-Sha256:
- aec2f5c12aa11ae937c51ab536de73eb56bb4e730f296b832c344d6311e48322 4931365 raspisms_3.5.5.orig.tar.gz
- fb8e607515087ffa503cebc38534efd9066e8330880700a013e6bf326a8e19ea 8596 raspisms_3.5.5.debian.tar.xz
+ 06bb087c2ef71805167d749046c0d00dcf3175b942cab3f8d553c6b762d1d922 7887193 raspisms_3.6.0.orig.tar.gz
+ 4b447810ba9bc55ca15634cc2bbe8ce282cd95ddd15e68fd0dfa2417e6da4467 8728 raspisms_3.6.0.debian.tar.xz
 Files:
- ed89d5504136a2e40077820b896eccc4 4931365 raspisms_3.5.5.orig.tar.gz
- 1c7b5ebac814e88defa4584b2c44958b 8596 raspisms_3.5.5.debian.tar.xz
+ 282b349c92bdd2510c8aa29a9e0f06f0 7887193 raspisms_3.6.0.orig.tar.gz
+ 6ded47e601ba89bc30419450d7d4e8d0 8728 raspisms_3.6.0.debian.tar.xz
