@@ -1,3 +1,10 @@
+raspisms (3.6.3) jammy; urgency=medium
+
+  * v3.6.3          Fix bad offset on invalid csv file while importing
+    contact
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 01 Mar 2023 18:36:44 +0000
+
 raspisms (3.6.1) jammy; urgency=medium
 
   * v3.6.1          Fix preview conditional group
