@@ -1,3 +1,9 @@
+raspisms (3.6.1) jammy; urgency=medium
+
+  * v3.6.1          Fix preview conditional group
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Wed, 01 Mar 2023 12:00:28 +0000
+
 raspisms (3.6.0) jammy; urgency=medium
 
   * v3.6.0          Add multiple new functions : - A new adapter for
