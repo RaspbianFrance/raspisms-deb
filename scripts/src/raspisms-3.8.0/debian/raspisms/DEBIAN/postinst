@@ -1,0 +1,529 @@
+#!/bin/bash
+set -e
+trap error_report ERR
+
+#Source debconf lib
+. /usr/share/debconf/confmodule
+
+SCRIPT_DIR=$(dirname $(readlink -f $0))
+IS_UPDATE=true
+id -u raspisms || IS_UPDATE=false
+
+
+### CONF VARS ###
+
+INSTALL_DIR="/usr/share/raspisms"
+LOG_DIR="/var/log/raspisms"
+
+#Apache
+APACHE_AVAILABLE_DIR="/etc/apache2/sites-available"
+db_get raspisms/apache_auto_conf
+APACHE_AUTO_CONF=$RET
+
+#Systemd
+db_get raspisms/systemd_auto_conf
+SYSTEMD_AUTO_CONF=$RET
+SYSTEMD_DIR="/etc/systemd/system"
+
+#App fix values
+APP_ENV="prod"
+APP_SECRET=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+
+#Database & app database
+db_get raspisms/database_auto_conf
+DATABASE_AUTO_CONF=$RET
+db_get raspisms/database_admin_user
+DATABASE_ADMIN_USER=$RET
+db_get raspisms/database_admin_password
+DATABASE_ADMIN_PASSWORD=$RET
+db_get raspisms/database_host
+APP_DATABASE_HOST=$RET
+db_get raspisms/database_name
+APP_DATABASE_NAME=$RET
+db_get raspisms/database_user
+APP_DATABASE_USER=$RET
+db_get raspisms/database_password
+APP_DATABASE_PASS=$RET
+if [ -z "$APP_DATABASE_PASS" ] ; then APP_DATABASE_PASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) ; db_set raspisms/database_password "$APP_DATABASE_PASS" ; fi
+
+#App static http url
+db_get raspisms/app_static_http_url
+APP_STATIC_HTTP_URL=$RET
+
+#App user
+db_get raspisms/app_user_email
+APP_USER_EMAIL=$RET
+db_get raspisms/app_user_password
+APP_USER_PASSWORD=$RET
+if [ -z "$APP_USER_PASSWORD" ] ; then APP_USER_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1) ; db_set raspisms/app_user_password "$APP_DATABASE_PASS" ; fi
+APP_USER_ADMIN=true
+
+#App Mail SMTP
+db_get raspisms/app_mail_config
+APP_MAIL_CONFIG=$RET
+if [ "$APP_MAIL_CONFIG" = "true" ]; then
+    db_get raspisms/app_mail_smtp_user
+    APP_MAIL_SMTP_USER=$RET
+    db_get raspisms/app_mail_smtp_password
+    APP_MAIL_SMTP_PASSWORD=$RET
+    db_get raspisms/app_mail_smtp_host
+    APP_MAIL_SMTP_HOST=$RET
+    db_get raspisms/app_mail_smtp_tls
+    APP_MAIL_SMTP_TLS=$RET
+    db_get raspisms/app_mail_smtp_port
+    APP_MAIL_SMTP_PORT=$RET
+    db_get raspisms/app_mail_from
+    APP_MAIL_FROM=$RET
+fi
+
+#App URL Shortener
+db_get raspisms/app_url_shortener_config
+APP_URL_SHORTENER_CONFIG=$RET
+if [ "$APP_URL_SHORTENER_CONFIG" = "true" ]; then
+    db_get raspisms/app_url_shortener_host
+    APP_URL_SHORTENER_HOST=$RET
+    db_get raspisms/app_url_shortener_user
+    APP_URL_SHORTENER_USER=$RET
+    db_get raspisms/app_url_shortener_password
+    APP_URL_SHORTENER_PASSWORD=$RET
+fi
+
+GENERATED_DATABASE_TEXT="Host: $APP_DATABASE_HOST\n\
+User: $APP_DATABASE_USER\n\
+Pass: $APP_DATABASE_PASS\n\
+Name: $APP_DATABASE_NAME\n"
+
+GENERATED_USER_TEXT="Email: $APP_USER_EMAIL\n\
+Password: $APP_USER_PASSWORD\n\
+Admin: $APP_USER_ADMIN\n"
+
+### Functions ###
+error_report () {
+    printf "\n\nError on line $(caller)\n\n";
+    exit 1
+}
+
+ask_for_conf_file_update () {
+    CONF_FILE=$1
+    NEW_FILE=$1
+
+    printf "The configuration file $CONF_FILE have been modified by package maintainer and conflict with your own modifications.\n"
+
+    while true; do
+        printf "Do you want to replace your file with the maintainer one? [Y/n/d (to show diff)] : "
+        read confirm
+        return 0
+        if [ -z "$confirm" ]; then
+            confirm="y"
+        fi
+
+        case $confirm in
+            Y | y)
+                printf "\nReplace configuration file $CONF_FILE.\n"
+                return 0
+                ;;
+
+            N | n) 
+                printf "\nDo not replace configuration file $CONF_FILE.\n"
+                return 1
+                ;;
+
+            D | d)
+                printf "\nDiff : \n"
+                diff $CONF_FILE $NEW_FILE
+                ;;
+
+            *) 
+                printf "\nInvalid answer, please answer with 'Y' or 'N'.\n"
+                ;;
+        esac
+    done
+}
+
+do_show_credentials () {
+    if [ "$IS_UPDATE" = true ]; then
+        return 0
+    fi
+    
+    printf "\n\n"
+    printf "Here are the credentials of your RaspiSMS installation.\n"
+    printf "\n"
+    
+    if [ $DATABASE_AUTO_CONF ]
+    then
+        printf "####### DATABASE ######\n"
+        printf "$GENERATED_DATABASE_TEXT"
+        printf "\n"
+        printf "You can find those in $INSTALL_DIR/.credentials_db\n"
+        printf "#######################\n"
+        printf "\n"
+    fi
+
+    printf "####### RASPISMS USER ######\n"
+    printf "$GENERATED_USER_TEXT"
+    printf "\n"
+    printf "You can find those in $INSTALL_DIR/.credentials\n"
+    printf "############################\n"
+    printf "\n"
+}
+
+
+do_app_installation () {
+    do_app_config || return 1
+    do_composer || return 1
+    
+    if [ ! $DATABASE_AUTO_CONF ]; then return 0; fi
+    
+    do_phinx || return 1
+    do_app_user || return 1
+}
+
+do_composer () {
+    printf "\n"
+    printf "Do composer...\n"
+    cd $INSTALL_DIR
+    
+    if [ "$IS_UPDATE" = false ]; then
+        php composer.phar self-update
+        php composer.phar install
+    else
+        php composer.phar self-update
+        php composer.phar update
+    fi
+    
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_phinx () {
+    printf "\n"
+    printf "Do Phinx migrations...\n"
+    
+    cd $INSTALL_DIR
+    php vendor/bin/phinx migrate
+    
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_app_config () {
+    printf "\n"
+    printf "Do configuration of RaspiSMS app...\n"
+
+    cd $INSTALL_DIR
+
+    printf "  Copy .dist files to .dist.local for edition\n"
+    find . -type f -name "*.dist" -exec cp {} {}.local \;
+
+    printf "  Replace APP_ENV : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_ENV%' "$APP_ENV" -- {} \;
+    
+    printf "  Replace APP_SECRET : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_SECRET%' "$APP_SECRET" -- {} \;
+
+    printf " Replace APP_STATIC_HTTP_URL : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_STATIC_HTTP_URL%' "$APP_STATIC_HTTP_URL" -- {} \;
+
+    if [ "$DATABASE_AUTO_CONF" = "true" ]; then
+        printf "  Replace APP_DATABASE_HOST : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_HOST%' "$APP_DATABASE_HOST" -- {} \;
+        
+        printf "  Replace APP_DATABASE_NAME : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_NAME%' "$APP_DATABASE_NAME" -- {} \;
+        
+        printf "  Replace APP_DATABASE_USER : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_USER%' "$APP_DATABASE_USER" -- {} \;
+        
+        printf "  Replace APP_DATABASE_PASS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_DATABASE_PASS%' "$APP_DATABASE_PASS" -- {} \;
+    fi
+    
+    if [ "$APP_MAIL_CONFIG" = "true" ]; then
+        printf "  Replace APP_MAIL_SMTP_USER : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_USER%' "$APP_MAIL_SMTP_USER" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_PASS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_PASS%' "$APP_MAIL_SMTP_PASSWORD" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_HOST : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_HOST%' "$APP_MAIL_SMTP_HOST" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_TLS : \n"
+        find . -type f -name "*.dist.local" -exec replace "'%APP_MAIL_SMTP_TLS%'" "$APP_MAIL_SMTP_TLS" -- {} \;
+        
+        printf "  Replace APP_MAIL_SMTP_PORT : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_SMTP_PORT%' "$APP_MAIL_SMTP_PORT" -- {} \;
+        
+        printf "  Replace APP_MAIL_FROM : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_FROM%' "$APP_MAIL_FROM" -- {} \;
+    fi
+    
+    printf "  Replace APP_URL_SHORTENER : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER%' "$APP_URL_SHORTENER_CONFIG" -- {} \;
+
+    if [ "$APP_URL_SHORTENER_CONFIG" = "true" ]; then
+        printf "  Replace APP_URL_SHORTENER_HOST : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER_HOST%' "$APP_URL_SHORTENER_HOST" -- {} \;
+       
+        printf "  Replace APP_URL_SHORTENER_USER : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER_USER%' "$APP_URL_SHORTENER_USER" -- {} \;
+        
+        printf "  Replace APP_URL_SHORTENER_PASS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER_PASS%' "$APP_URL_SHORTENER_PASSWORD" -- {} \;
+    fi
+
+    printf "  Remove .dist.local extensions.\n"
+    for f in *.dist.local
+    do
+        FINAL_FILE=$(basename $f '.dist.local')
+     
+        #If file already exists, check if we must update, else create
+        if [ -f "$FINAL_FILE" ]; then
+            CURRENT_FILE_MD5=$(md5sum "$FINAL_FILE" | cut -d' ' -f1)
+            NEW_FILE_MD5=$(md5sum "$f" | cut -d' ' -f1)
+
+            #Only if file have changed on one part, ask for update and potentially update
+            if [ "$CURRENT_FILE_MD5" != "$NEW_FILE_MD5" ]; then
+                ucf --debconf-ok $f $FINAL_FILE
+                rm $f
+            fi
+        else
+            mv $f $FINAL_FILE
+        fi
+    done
+
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_app_user () {
+    if [ "$IS_UPDATE" = true ]; then
+        return 0
+    fi
+    
+    printf "\n"
+    printf "Create RaspiSMS default user.\n"
+    
+    cd $INSTALL_DIR
+
+    php console.php controllers/internals/Console.php create_update_user --email="$APP_USER_EMAIL" --password="$APP_USER_PASSWORD" --admin="$APP_USER_ADMIN"
+
+    if [ ! $? -eq 0 ]
+    then
+        printf "\n"
+        printf "Error during user generation."
+        printf "\n"
+        return 1
+    fi
+    
+    printf "$GENERATED_USER_TEXT" > "$INSTALL_DIR/.credentials"
+    
+    printf "Done\n"
+    printf "\n"
+}
+
+
+do_apache_config () {
+    if [ "$IS_UPDATE" = true ]; then
+        return 0
+    fi
+    
+    if [ ! $APACHE_AUTO_CONF ]
+    then
+        return 0
+    fi
+
+    if [ ! `which apache2` ] 
+    then
+        return 0
+    fi
+
+    printf "Start apache if not started\n"
+    service apache2 start
+    printf "Done.\n"
+
+    printf "\n"
+    printf "Configure apache2 to make RaspiSMS available over http://localhost/raspisms\n"
+    
+    cd $INSTALL_DIR
+
+    printf "  Make symlink $INSTALL_DIR/confs/apache2/raspisms.conf to $APACHE_AVAILABLE_DIR/raspisms.conf\n"
+    ln -sf "$INSTALL_DIR/confs/apache2/raspisms.conf" "$APACHE_AVAILABLE_DIR/raspisms.conf"
+
+    printf "  Enable raspisms.conf\n"
+    a2ensite "raspisms.conf"
+    
+    printf "  Enable apache rewrite\n"
+    a2enmod "rewrite"
+
+    printf "Reload apache.\n"
+    printf "\n"
+    service apache2 reload
+}
+
+
+do_systemd_config () {
+    if [ "$IS_UPDATE" = true ]; then
+        return 0
+    fi
+    
+    if [ ! $SYSTEMD_AUTO_CONF ]
+    then
+        return 0
+    fi
+
+    if [ ! `which systemd` ] 
+    then
+        printf "Systemd is not installed.\n"
+        return 0
+    fi
+
+    printf "\n"
+    printf "Configure systemd to make RaspiSMS start on boot\n"
+    
+    cd $INSTALL_DIR
+
+    printf "  Make symlink $INSTALL_DIR/confs/systemd/raspisms.service to $SYSTEMD_DIR/raspisms.service\n"
+    ln -sf "$INSTALL_DIR/confs/systemd/raspisms.service" "$SYSTEMD_DIR/raspisms.service"
+    chmod 644 "$SYSTEMD_DIR/raspisms.service"
+
+    printf "  Enable raspisms.service\n"
+    systemctl enable raspisms.service
+    if [ ! $? -eq 0 ]
+    then
+        printf "Cannot enable raspisms service."
+        return 1
+    fi
+
+    printf "Done.\n"
+
+
+    printf " Start raspisms.service\n"
+    systemctl start raspisms.service
+    if [ ! $? -eq 0 ]
+    then
+        printf "Cannot start raspisms service."
+        return 1
+    fi
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_database_config () {
+    if [ "$IS_UPDATE" = true ]; then
+        return 0
+    fi
+    
+    if [ ! $DATABASE_AUTO_CONF ]
+    then
+        return 0
+    fi
+
+    printf "Start Mysql...\n"
+    service mysql start
+    printf "Done.\n"
+
+    if [ ! $DATABASE_ADMIN_PASSWORD ]
+    then
+        DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER -e "
+    else
+        DB_INVOKE="mysql --host=$APP_DATABASE_HOST --user=$DATABASE_ADMIN_USER --password=$DATABASE_ADMIN_PASSWORD -e "
+    fi
+
+    printf "\n"
+    printf "Configure MySQL...\n"
+
+    printf "  Create database.\n"
+    echo $DB_INVOKE "\"CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;\""
+    $DB_INVOKE "CREATE DATABASE IF NOT EXISTS \`$APP_DATABASE_NAME\`;"
+
+    printf "  Create user.\n"
+    echo $DB_INVOKE "\"DROP USER IF EXISTS'$APP_DATABASE_USER'@'%'\""
+    $DB_INVOKE "DROP USER IF EXISTS '$APP_DATABASE_USER'@'%'"
+    echo $DB_INVOKE "\"CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';\""
+    $DB_INVOKE "CREATE USER IF NOT EXISTS '$APP_DATABASE_USER'@'%' IDENTIFIED BY '$APP_DATABASE_PASS';"
+    
+    printf "  Grant privileges.\n"
+    echo $DB_INVOKE "\"GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;\""
+    $DB_INVOKE "GRANT ALL PRIVILEGES ON \`$APP_DATABASE_NAME\`.* to '$APP_DATABASE_USER'@'%' WITH GRANT OPTION;"
+    
+    printf "  Flush privileges.\n"
+    echo $DB_INVOKE "\"FLUSH PRIVILEGES;\""
+    $DB_INVOKE "FLUSH PRIVILEGES;"
+    
+    printf "$GENERATED_DATABASE_TEXT" > "$INSTALL_DIR/.credentials_db"
+
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_user_and_permission () {
+    if [ "$IS_UPDATE" = true ]; then
+        return 0
+    fi
+    
+    printf "\n"
+    printf "Manage files permissions.\n"
+    
+    cd $INSTALL_DIR
+
+    printf " Add user raspisms without any password. Only root can use it.\n"
+    useradd -M raspisms
+
+    if [ ! `getent group www-data` ]
+    then
+        GROUP="raspisms"
+    else
+        GROUP="www-data"
+    fi
+
+    printf "  Make all files belongs to raspisms:$GROUP.\n"
+    find "$INSTALL_DIR" -type f -exec chown "raspisms:$GROUP" {} \;
+    find "$INSTALL_DIR" -type d -exec chown "raspisms:$GROUP" {} \;
+    find "$LOG_DIR" -type d -exec chown "raspisms:$GROUP" {} \;
+    
+    printf "  Make all files 664.\n"
+    find "$INSTALL_DIR" -type f -exec chmod 664 {} \;
+    
+    printf "  Make all directories 775.\n"
+    find "$INSTALL_DIR" -type d -exec chmod 775 {} \;
+    find "$LOG_DIR" -type d -exec chmod 775 {} \;
+    
+    printf "  Make scripts 751.\n" 
+    chmod -f 751 scripts
+
+    printf "  Make console.php bin/* and vendor/bin/* 754.\n"
+    find "console.php" -exec chmod 754 {} \;
+    find "bin" -exec chmod 754 {} \;
+    find "vendor/bin" -exec chmod 754 {} \;
+
+    printf "  Make conf files 640"
+    chmod -f 640 env.*php phinx.yml
+    
+    printf "  Make credentials files 700 and root"
+    chmod -f 700 .credentials .credentials_db
+    chown root .credentials .credentials_db
+    
+    printf "\n"
+    printf "Done.\n"
+    printf "\n"
+}
+
+
+do_database_config || exit 1
+do_app_installation || exit 1
+do_apache_config || exit 1
+do_user_and_permission || exit 1
+do_systemd_config || exit 1
+do_show_credentials || exit 1
+
+
+exit 0
