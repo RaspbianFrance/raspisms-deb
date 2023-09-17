@@ -76,6 +76,18 @@ if [ "$APP_MAIL_CONFIG" = "true" ]; then
     APP_MAIL_FROM=$RET
 fi
 
+#App URL Shortener
+db_get raspisms/app_url_shortener_config
+APP_URL_SHORTENER_CONFIG=$RET
+if [ "$APP_URL_SHORTENER_CONFIG" = "true" ]; then
+    db_get raspisms/app_url_shortener_host
+    APP_URL_SHORTENER_HOST=$RET
+    db_get raspisms/app_url_shortener_user
+    APP_URL_SHORTENER_USER=$RET
+    db_get raspisms/app_url_shortener_password
+    APP_URL_SHORTENER_PASSWORD=$RET
+fi
+
 GENERATED_DATABASE_TEXT="Host: $APP_DATABASE_HOST\n\
 User: $APP_DATABASE_USER\n\
 Pass: $APP_DATABASE_PASS\n\
@@ -248,6 +260,20 @@ do_app_config () {
         
         printf "  Replace APP_MAIL_FROM : \n"
         find . -type f -name "*.dist.local" -exec replace '%APP_MAIL_FROM%' "$APP_MAIL_FROM" -- {} \;
+    fi
+    
+    printf "  Replace APP_URL_SHORTENER : \n"
+    find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER%' "$APP_URL_SHORTENER_CONFIG" -- {} \;
+
+    if [ "$APP_URL_SHORTENER_CONFIG" = "true" ]; then
+        printf "  Replace APP_URL_SHORTENER_HOST : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER_HOST%' "$APP_URL_SHORTENER_HOST" -- {} \;
+       
+        printf "  Replace APP_URL_SHORTENER_USER : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER_USER%' "$APP_URL_SHORTENER_USER" -- {} \;
+        
+        printf "  Replace APP_URL_SHORTENER_PASS : \n"
+        find . -type f -name "*.dist.local" -exec replace '%APP_URL_SHORTENER_PASS%' "$APP_URL_SHORTENER_PASSWORD" -- {} \;
     fi
 
     printf "  Remove .dist.local extensions.\n"

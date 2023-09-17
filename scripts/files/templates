@@ -56,10 +56,31 @@ Type: string
 Description: Email FROM :
  You must provide the e-mail address to use for the From header of emails sent by RaspiSMS.
 
+Template: raspisms/app_url_shortener_config
+Type: boolean
+Description: Do you want to configure a YOURLS URL shortener instance to use with RaspiSMS?
+ RaspiSMS can shorten HTTP links in SMS using a YOURLS instance.
+ If you wish for RaspiSMS to shorten links, you must configure the YOURLS instance to use.
+
+Template: raspisms/app_url_shortener_host
+Type: string
+Description: YOURLS URL shortener host :
+ You must provide the hostname of a YOURLS instance.
+
+Template: raspisms/app_url_shortener_user
+Type: string
+Description: YOURLS URL shortener user :
+ You must provide the username of a YOURLS account.
+
+Template: raspisms/app_url_shortener_password
+Type: password
+Description: YOURLS URL shortener password :
+ You must provide the password of a YOURLS account.
+
 Template: raspisms/apache_auto_conf
 Type: boolean
 Default: true
-Description: Should Apache be configure Apache to make RaspiSMS available?
+Description: Should Apache be configure to make RaspiSMS available?
  RaspiSMS need to be made available using a web server like Apache or Nginx.
  If you wish Apache can be automaticly configured.
 
