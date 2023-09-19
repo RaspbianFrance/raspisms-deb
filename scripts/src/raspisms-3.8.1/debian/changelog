@@ -1,3 +1,9 @@
+raspisms (3.8.1) jammy; urgency=medium
+
+  * v3.8.1          Fix check mms setting in API
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Tue, 19 Sep 2023 16:37:00 +0000
+
 raspisms (3.8.0) jammy; urgency=medium
 
   * v3.8.0          Add support for HTTP links shortening in SMS using
