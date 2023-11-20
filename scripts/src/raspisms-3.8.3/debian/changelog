@@ -1,3 +1,10 @@
+raspisms (3.8.3) jammy; urgency=medium
+
+  * v3.8.3          Fix SMS stop bug that make the sender daemon ignore
+    the SMS Stopped numbers
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 20 Nov 2023 14:54:04 +0000
+
 raspisms (3.8.2) jammy; urgency=medium
 
   * v3.8.2          Fix signature of function for inbound and end call
