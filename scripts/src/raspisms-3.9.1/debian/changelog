@@ -1,3 +1,9 @@
+raspisms (3.9.1) jammy; urgency=medium
+
+  * v3.9.1          Fix bad url parsing in router
+
+ -- Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>  Mon, 26 Feb 2024 11:09:02 +0000
+
 raspisms (3.9.0) jammy; urgency=medium
 
   * v3.9.0          Add support for automatic response to SMS STOP

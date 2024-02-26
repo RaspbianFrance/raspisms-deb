@@ -1,10 +1,10 @@
-8a08e67afa538dff78dbf2d5ef89dba8  usr/share/doc/raspisms/changelog.gz
+324c9583bd0fe7030853eb319d6ebe54  usr/share/doc/raspisms/changelog.gz
 b45e019785136ed62e5224b747ef7c86  usr/share/doc/raspisms/copyright
 5a23ff33d8405b2a53290c090d00e24e  usr/share/lintian/overrides/raspisms
 3c335ccc4e8be99f093743f75e668d9c  usr/share/raspisms/.htaccess
 1ebbd3e34237af26da5dc08a4e440464  usr/share/raspisms/LICENSE
 e733a3c806072a65688252e288af3415  usr/share/raspisms/README.md
-4027f34b941d5b4a7dbc5ad31233aa12  usr/share/raspisms/VERSION
+531fd6b5faa8072a29763699e12dacf3  usr/share/raspisms/VERSION
 ca0d999a2469040a4cc74c9d86591174  usr/share/raspisms/adapters/AdapterInterface.php
 94afbc169af238df42f4cb8f265a9716  usr/share/raspisms/adapters/BenchmarkAdapter.php
 7a39e2eb20b9b66f40172cc544fabc1e  usr/share/raspisms/adapters/GammuAdapter.php
@@ -68,10 +68,10 @@ fa2772327f55d8198301fdb8bcfc8158  usr/share/raspisms/assets/fonts/glyphicons-hal
 448c34a56d699c29117adc64c43affeb  usr/share/raspisms/assets/fonts/glyphicons-halflings-regular.woff2
 6750a2819f6c16395467169f0b5bfbff  usr/share/raspisms/assets/img/404.svg
 2a9ca0418215640e5af882bffb5b6749  usr/share/raspisms/assets/img/error_unknown.svg
-d99b9bcd73fc95464a185f8a14efd2bb  usr/share/raspisms/assets/img/favicon.png
+389dbae4f016847cfafeddd77378fa2b  usr/share/raspisms/assets/img/favicon.png
 416250f60d785a2e02f17e054d2e4e44  usr/share/raspisms/assets/img/flags.png
 d429a5777afaf2fc349652e812e9bb11  usr/share/raspisms/assets/img/flags@2x.png
-9fe805aaa04c294d84246e6e1fa36662  usr/share/raspisms/assets/img/logo.png
+ef6fe0382c714faf358f57a9c811c5b1  usr/share/raspisms/assets/img/logo.png
 e27ad439bda9181955ab3dadba46c6ce  usr/share/raspisms/assets/img/reinitialize-password-error.png
 3e58e2fb141a55fcc479f4a898a12f1f  usr/share/raspisms/assets/img/reinitialize-password-validation.png
 e9ff1803cb414727f4f17c4cc16cf262  usr/share/raspisms/assets/img/send-email.png
@@ -243,7 +243,7 @@ a33594b758c7cfb01995586edb32d55b  usr/share/raspisms/db/migrations/2023031714420
 6f813b3e9e83a1c5e4f5693cf688e924  usr/share/raspisms/descartes/Controller.php
 fd6faddd79843627a3423147bf3ff737  usr/share/raspisms/descartes/InternalController.php
 f853199a4a2071d3058cb9ef93ee273b  usr/share/raspisms/descartes/Model.php
-141b02fae0c2e3fd926201b2d5034983  usr/share/raspisms/descartes/Router.php
+d1267475dc3cf7a788354f43ad5e9ef5  usr/share/raspisms/descartes/Router.php
 5f391466d56385f75ea2e1bd8334f949  usr/share/raspisms/descartes/autoload.php
 d24701f317e5be0c742e6b475ee76892  usr/share/raspisms/descartes/env.php
 3df444fd6304047b76c7847d47dc5e84  usr/share/raspisms/descartes/exceptions/DescartesException404.php
