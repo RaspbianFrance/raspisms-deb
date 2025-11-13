@@ -1,0 +1,36 @@
+Format: 1.8
+Date: Thu, 13 Nov 2025 14:45:12 +0000
+Source: raspisms
+Binary: raspisms
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 3.9.5
+Distribution: noble
+Urgency: medium
+Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Changed-By: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
+Description:
+ raspisms   - Web application allowing to send and receive GSM messages
+Changes:
+ raspisms (3.9.5) noble; urgency=medium
+ .
+   * v3.9.5          Fix bug preventing creation of conditionnal groups
+     with metas data
+Checksums-Sha1:
+ b1cc6c6d75c36f48b0541d76ff698d256d37e805 954 raspisms_3.9.5.dsc
+ 1e6a530c262c9cebdc9abb13bc5df5272d30b4c1 8779273 raspisms_3.9.5.orig.tar.gz
+ 8c87cffbe9e48d2117244404cecc10b5ebbce99e 9488 raspisms_3.9.5.debian.tar.xz
+ 346a9a6b29a938deaa763ec1fed415f08a8b7c66 2087640 raspisms_3.9.5_all.deb
+ 26508eb2ab39b547d294545a1819579b26b57ae2 7549 raspisms_3.9.5_amd64.buildinfo
+Checksums-Sha256:
+ 72865e82d79bf1b5001d05c92617542ea629a45de2cd2207943385889ceef569 954 raspisms_3.9.5.dsc
+ c1eb46bd8686e2b43a2667738fd1b92f000d64f2c2b546c2a10b5dfe4f50895a 8779273 raspisms_3.9.5.orig.tar.gz
+ 17ee7f0e389282a7b28d8c79dec1c256489869b1e12dfab2d3713804f294a411 9488 raspisms_3.9.5.debian.tar.xz
+ 7a2bb15a41da594fecb9bebee9d706df6abb446b7fa3357c37ba272f2f19ecef 2087640 raspisms_3.9.5_all.deb
+ eb0de2e2f3b344a2c73d466c68e42ad3a132a7b9ad1412722e8f6a2d7d580b09 7549 raspisms_3.9.5_amd64.buildinfo
+Files:
+ 691bc84a844e3f4f467ef7975ac123d0 954 web optional raspisms_3.9.5.dsc
+ 86b78ec135bae1b4d4380164ac7ce2ae 8779273 web optional raspisms_3.9.5.orig.tar.gz
+ ccb930aa838ce8bc60f20183f943e72a 9488 web optional raspisms_3.9.5.debian.tar.xz
+ 5d9146ff0d477631c6d2b85997469fd6 2087640 web optional raspisms_3.9.5_all.deb
+ 2cce2b7aeb58940cea5b6879c2c384cc 7549 web optional raspisms_3.9.5_amd64.buildinfo

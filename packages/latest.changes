@@ -1,37 +1,36 @@
 Format: 1.8
-Date: Fri, 20 Dec 2024 22:46:11 +0000
+Date: Thu, 13 Nov 2025 14:45:12 +0000
 Source: raspisms
 Binary: raspisms
 Built-For-Profiles: noudeb
 Architecture: source all
-Version: 3.9.2
-Distribution: jammy
+Version: 3.9.5
+Distribution: noble
 Urgency: medium
 Maintainer: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
 Changed-By: Pierre-Lin Bonnemaison <raspbianfrance@gmail.com>
 Description:
  raspisms   - Web application allowing to send and receive GSM messages
 Changes:
- raspisms (3.9.2) jammy; urgency=medium
+ raspisms (3.9.5) noble; urgency=medium
  .
-   * v3.9.2              Add strategy for more efficient pagination in
-     API listing of entries by using before_id and after_id wheres
-     instead of pagination if possible
+   * v3.9.5          Fix bug preventing creation of conditionnal groups
+     with metas data
 Checksums-Sha1:
- 9c2c59e8df7f3af0d78e628c029f071a977b07eb 954 raspisms_3.9.2.dsc
- 54fd026e49192c52fdba9b7d7cd02ebafd5d8462 8697187 raspisms_3.9.2.orig.tar.gz
- 19334a7f7c4cd5ea7a1e9e257af7b66f988bed6d 9436 raspisms_3.9.2.debian.tar.xz
- 12a5c431c61ec68f9cfad92bf32b1e297942ef5f 2109324 raspisms_3.9.2_all.deb
- a40d17c32b167cd0458ae98a906c87a8fcd9cb09 7711 raspisms_3.9.2_amd64.buildinfo
+ b1cc6c6d75c36f48b0541d76ff698d256d37e805 954 raspisms_3.9.5.dsc
+ 1e6a530c262c9cebdc9abb13bc5df5272d30b4c1 8779273 raspisms_3.9.5.orig.tar.gz
+ 8c87cffbe9e48d2117244404cecc10b5ebbce99e 9488 raspisms_3.9.5.debian.tar.xz
+ 346a9a6b29a938deaa763ec1fed415f08a8b7c66 2087640 raspisms_3.9.5_all.deb
+ 26508eb2ab39b547d294545a1819579b26b57ae2 7549 raspisms_3.9.5_amd64.buildinfo
 Checksums-Sha256:
- 6eb1b574f09cc0db4013bec06066686e59e6bb7836debcfbf910c416206cea9a 954 raspisms_3.9.2.dsc
- 23ade0e863fe79f377433c623a80073ee357d1ddd27424dc2354f620380afbd5 8697187 raspisms_3.9.2.orig.tar.gz
- 0d618aac7d5030ec6594417c8c62e062911c7f40e8baf8bd5f33b48a0d0200e8 9436 raspisms_3.9.2.debian.tar.xz
- e68067d1f82dc8845664fd154ed83ee41c875c6e41245bef52f2778b5b8052f8 2109324 raspisms_3.9.2_all.deb
- 9b5fed28b5dc937560ff9ef121593a3565388001c8de7d4e0aa28eb49ee80c51 7711 raspisms_3.9.2_amd64.buildinfo
+ 72865e82d79bf1b5001d05c92617542ea629a45de2cd2207943385889ceef569 954 raspisms_3.9.5.dsc
+ c1eb46bd8686e2b43a2667738fd1b92f000d64f2c2b546c2a10b5dfe4f50895a 8779273 raspisms_3.9.5.orig.tar.gz
+ 17ee7f0e389282a7b28d8c79dec1c256489869b1e12dfab2d3713804f294a411 9488 raspisms_3.9.5.debian.tar.xz
+ 7a2bb15a41da594fecb9bebee9d706df6abb446b7fa3357c37ba272f2f19ecef 2087640 raspisms_3.9.5_all.deb
+ eb0de2e2f3b344a2c73d466c68e42ad3a132a7b9ad1412722e8f6a2d7d580b09 7549 raspisms_3.9.5_amd64.buildinfo
 Files:
- 7ba6b920a7c67f5a042b89405f67a291 954 web optional raspisms_3.9.2.dsc
- ba4a74e62300cf18182cf596ffd4005b 8697187 web optional raspisms_3.9.2.orig.tar.gz
- f3832e050aa72c263d4257f182134166 9436 web optional raspisms_3.9.2.debian.tar.xz
- 5f63f264e41cf9e707f8c3a2b4e66701 2109324 web optional raspisms_3.9.2_all.deb
- a516346da19ffcbd8c4bff79feeb4633 7711 web optional raspisms_3.9.2_amd64.buildinfo
+ 691bc84a844e3f4f467ef7975ac123d0 954 web optional raspisms_3.9.5.dsc
+ 86b78ec135bae1b4d4380164ac7ce2ae 8779273 web optional raspisms_3.9.5.orig.tar.gz
+ ccb930aa838ce8bc60f20183f943e72a 9488 web optional raspisms_3.9.5.debian.tar.xz
+ 5d9146ff0d477631c6d2b85997469fd6 2087640 web optional raspisms_3.9.5_all.deb
+ 2cce2b7aeb58940cea5b6879c2c384cc 7549 web optional raspisms_3.9.5_amd64.buildinfo
